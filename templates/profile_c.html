@@ -1,0 +1,279 @@
+{% extends "layout.html" %} {% block body1 %}
+<main class="page-main">
+
+
+    
+  <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+          <div class="widjet --profile">
+
+
+
+
+
+              <div class="widjet__body">
+                  <div class="user-info">
+                    {% if the_user.pic1 %}
+                    <div class="user-info__avatar"><img src="{{the_user.pic1.url}}" alt="profile"></div>
+                    {%else%}
+                    <div class="user-info__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+                    {% endif %}
+                      
+                      <div class="user-info__box">
+                          <div class="user-info__title">{{the_user.username}}</div>
+                          <div class="user-info__text">{{the_user.name}}</div>
+                       
+                          <div class="user-info__text">{{the_user.university}}</div>
+                      </div>
+                  </div>
+                  
+                  {%if the_usercore.username == request.user.username%} <a class="uk-button uk-button-danger" href="/account/c/update/{{the_user.username}}/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+                  
+                  {% else %}
+
+                  <div class="friend-requests-item__action" style="overflow: hidden;margin-left: 55%;">
+                  {% if me in the_user.friends.all  %}
+                  <button class="reject" type="button " onclick="location.href='/account/c/{{request.user}}/friends/fout/{{the_user.username}}';"> - </button>
+                  {% else %}
+                  <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{the_user.username}}';"><span class="ico_add-square"></span></button>
+                  {% endif %}
+                   <button class="confirm small" type="button" onclick="location.href='/account/c/{{request.user}}/message/{{the_user.username}}';"><i class="ico_chats"></i></button>
+
+                  {% if me in the_user.ibanned.all  %}
+                  <button class="confirm " type="button" onclick="location.href='/account/c/{{request.user}}/friends/reban/{{the_user.username}}';"><i class="ico_report"></i></button>
+                  {% else %}
+                   <button class="reject" type="button" onclick="location.href='/account/c/{{request.user}}/friends/ban/{{the_user.username}}';"><i class="ico_report"></i></button>
+                  {% endif %}   
+                </div>
+                  {%endif  %}
+               
+
+                </div>
+
+
+
+          </div>
+
+          <div class="widjet --bio" style="margin-top: 20px;margin-bottom: 10px;">
+                
+            <div class="container">
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-30px;margin-top: -0px;" ><h4 class="uk-text-lead">Bio</h4></div>
+      
+            </div>
+
+        <div style="margin-top: -45px;" class="widjet__body"> {{the_user.bio}}</div>
+        
+    
+      </div>
+              
+
+            <div class="js-popular" style="margin-top: 10px;">
+
+
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+
+                        
+                        {% if the_user.pic2 %}
+                        <div class="swiper-slide">
+                            <div class="game-card">
+                                <div class="game-card__box">
+
+                                    {% if the_user.pic2 %}
+                                    <div style="min-height: 400px;" class="game-card__media "><a href="{{the_user.pic2.url}}" ><img src="{{the_user.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                                    {%else%}
+                                    <div  style="min-height: 400px;" class="game-card__media"><a href="/static/assets/img/profile.png"><img src="/static/assets/img/profile.png" alt="Struggle of Rivalry" /></a></div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if the_user.pic3 %}
+                        <div class="swiper-slide">
+                            <div class="game-card">
+                                <div class="game-card__box">
+                                    {% if the_user.pic3 %}
+                                    <div style="min-height: 400px;" class="game-card__media"><a href="{{the_user.pic3.url}}"><img src="{{the_user.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                                    {%else%}
+                                 
+                                    <div style="min-height: 400px;" class="game-card__media"><a href="/static/assets/img/profile.png"><img src="/static/assets/img/profile.png" alt="Struggle of Rivalry" /></a></div>
+                                    {% endif %}   
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if the_user.pic4 %}
+
+                        <div class="swiper-slide">
+                            <div class="game-card">
+                                <div class="game-card__box">
+
+                                    {% if the_user.pic4 %}
+                                    <div style="min-height: 400px;" class="game-card__media"><a href="{{the_user.pic4.url}}"><img src="{{the_user.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                                    {%else%}
+                                    <div style="min-height: 400px;" class="game-card__media"><a href="/static/assets/img/profile.png"><img src="/static/assets/img/profile.png" alt="Struggle of Rivalry" /></a></div>
+                                    {% endif %} 
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+
+                        {% if the_user.pic5 %}
+
+                        <div class="swiper-slide">
+                            <div class="game-card">
+                                <div class="game-card__box">
+
+                                    {% if the_user.pic5 %}
+                                    <div style="min-height: 400px;" class="game-card__media"><a href="{{the_user.pic5.url}}"><img src="{{the_user.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                                    {%else%}
+                                    <div style="min-height: 400px;"class="game-card__media"><a href="/static/assets/img/profile.png"><img src="/static/assets/img/profile.png" alt="Struggle of Rivalry" /></a></div>
+                                    {% endif %} 
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+
+
+  
+
+        
+
+
+              {% for game in the_user.in_classics.all %}
+              {% if timenow|date:"U" > value.m_time|date:"U"  %}
+              <div class="widjet --activity">
+                <div class="widjet__head">
+                    <h3 class="uk-text-lead">Geçmişte Katıldığı Kullanıcı Aktiviteleri </h3>
+                </div>
+              
+              <div class="widjet__body">
+                  <div class="widjet-game">
+                      <div class="widjet-game__media"><a href="{{game.game_type.activity_picture.url}}"><img src="{{game.game_type.activity_picture.url}}"  alt="image"></a></div>
+                      <div class="widjet-game__info"><a class="widjet-game__title" href="/activities/{{game.id}}c/"> {{game.name}}</a>
+                        <div class="widjet-game__record">Aktivite : {{game.game_type}}</div>
+                          {% if game.place %}  
+                        <div class="widjet-game__record">Konum : {{game.place}}</div>
+                        {% elif game.if_its_anywhere %}
+                        <div class="widjet-game__record">Konum : {{game.if_its_anywhere}}</div>
+                        {% endif %}
+                        <div class="widjet-game__record">Buluşma Zamanı : {{game.m_time}}</div>
+                        <div class="widjet-game__record">Kişi Sayısı : {{game.ppl_existence.count}}/{{game.max_ppl_existence}}</div>
+
+                          <div class="widjet-game__last-played"></div>
+                      </div>
+                  </div>
+
+                  </div>
+              </div>
+
+              {% endif %}
+              {% endfor %}
+
+            
+              {% for game in the_user.in_non_classics.all %}
+              {% if timenow|date:"U" > value.m_time|date:"U"  %}
+
+              <div class="widjet__body">
+                  <div class="widjet-game">
+                      <div class="widjet-game__media"><a href="{{game.game_type.activity_picture.url}}"><img src="{{game.game_type.activity_picture.url}}" alt="image"></a></div>
+                      <div class="widjet-game__info"><a class="widjet-game__title" href="/activities/{{game.id}}c/"> {{game.name}}</a>
+                        <div class="widjet-game__record">Aktivite : {{game.game_type}}</div>
+                          {% if game.place %}  
+                        <div class="widjet-game__record">Konum : {{game.place}}</div>
+                        {% elif game.if_its_anywhere %}
+                        <div class="widjet-game__record">Konum : {{game.if_its_anywhere}}</div>
+                        {% endif %}
+                        <div class="widjet-game__record">Buluşma Zamanı : {{game.m_time}}</div>
+                        <div class="widjet-game__record">Kişi Sayısı : {{game.ppl_existence.count}}/{{game.max_ppl_existence}}</div>
+
+                          <div class="widjet-game__last-played"></div>
+                      </div>
+                  </div>
+
+                  </div>
+              </div>
+
+              {% endif %}
+              {% endfor %}
+            </div>
+
+
+
+
+
+
+
+            
+          </div>
+
+
+          
+            {% for game in the_user.in_placer_rooms.all %}
+            {% if timenow|date:"U" > value.m_time|date:"U"  %}
+            <div class="widjet --activity">
+                <div class="widjet__head">
+                    <h3 class="uk-text-lead">Geçmişte Katıldığı Mekan Aktiviteleri </h3>
+                </div>
+
+            <div class="widjet__body">
+                <div class="widjet-game">
+                    <div class="widjet-game__media"><a href="{{game.game_type.activity_picture.url}}"><img src="{{game.game_type.activity_picture.url}}" alt="image"></a></div>
+                    <div class="widjet-game__info"><a class="widjet-game__title" href="/activities/{{game.id}}c/"> {{game.name}}</a>
+                      <div class="widjet-game__record">Aktivite : {{game.game_type}}</div>
+                        {% if game.place %}  
+                      <div class="widjet-game__record">Konum : {{game.place}}</div>
+                      {% elif game.if_its_anywhere %}
+                      <div class="widjet-game__record">Konum : {{game.if_its_anywhere}}</div>
+                      {% endif %}
+                      <div class="widjet-game__record">Buluşma Zamanı : {{game.m_time}}</div>
+                      
+                      <div class="widjet-game__record">Kişi Sayısı : {{game.ppl_existence.count}}/{{game.max_ppl_existence}}</div>
+
+                        <div class="widjet-game__last-played"></div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+
+        </div>
+          
+      </div>
+
+  </div>
+</main>
+
+
+
+
+
+
+
+
+  {% endblock body1 %}
+
+
+
+

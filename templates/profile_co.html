@@ -1,0 +1,371 @@
+{% extends "layout.html" %} {% block body1 %}
+
+<main class="page-main">
+  <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+          <div class="widjet --profile">
+
+
+
+
+
+          <div class="widjet__body">
+              <div class="user-info">
+                {% if the_user.pic1 %}
+                <div class="user-info__avatar"><img style="object-fit: cover; width: 100%; height: 100%;" src="{{the_user.pic1.url}}" alt="profile"></div>
+                {%else%}
+                <div class="user-info__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+                {% endif %}
+                  
+                  <div class="user-info__box">
+                      <div class="user-info__title">@{{the_user.username}}</div>
+                      <div class="user-info__text">{{the_user.name}}</div>
+                   
+                      <div class="user-info__text">{{the_user.university}}</div>
+                  </div>
+              </div>
+              
+              {%if the_usercore.username == request.user.username%} <a class="uk-button uk-button-danger" href="/account/p/update/{{the_user.username}}/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+              {%endif  %}
+            </div>  
+            
+
+
+
+
+
+
+
+                <div class="js-popular" style="margin-top: 20px;">
+                
+  
+                  <div class="swiper">
+                      <div class="swiper-wrapper">
+  
+
+
+                        <div class="swiper-slide">
+                          <div class="game-card">
+                              <div class="game-card__box">
+
+                                  {% if the_user.pic1 %}
+                                  <div style="min-height: 300px;" class="game-card__media "><a href="{{the_user.pic1.url}}" ><img src="{{the_user.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                                  {%else%}
+                                  <div  style="min-height: 300px;" class="game-card__media"><a href="/static/assets/img/profile.png"><img src="/static/assets/img/profile.png" alt="Struggle of Rivalry" /></a></div>
+                                  {% endif %}
+
+                              </div>
+                          </div>
+                      </div>
+
+                          
+                          
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+          </div>
+
+
+
+
+
+      
+
+
+        </div>
+          
+      </div>
+
+  </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+
+<main class="page-main">
+
+  <div class="widjet__head">
+    <h3 class="uk-text-lead">Profil</h3>
+</div>
+
+
+  <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+
+    <ul class="uk-slideshow-items">
+
+
+
+        {% if the_user.pic1 %}
+        <li>
+          <img src="{{the_user.pic1.url}}" alt="profile" uk-cover>
+      </li>
+        {%else%}
+        <li>
+          <img src="/static/assets/img/profile.png" alt="profile" uk-cover>
+      </li>
+        {% endif %}
+
+
+        <li>
+            <img src="/static/assets/img/profile.png" alt="" uk-cover>
+        </li>
+        <li>
+            <img src="/static/assets/img/profile.png" alt="" uk-cover>
+        </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+</div>
+
+
+    
+  <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+          <div class="widjet --profile">
+
+
+
+
+              <div class="widjet__body">
+                  <div class="user-info">
+                      
+                      <div class="user-info__box">
+                          <div class="user-info__title">{{the_user.username}}</div>
+                          <div class="user-info__text">{{the_user.name}}</div>
+                       
+                          <div class="user-info__text">{{the_user.university}}</div>
+                      </div>
+                  </div>
+                  
+                  {%if the_usercore.username == request.user.username%} <a class="uk-button uk-button-danger" href="/account/c/update/{{the_user.username}}/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+                  {%endif  %}
+                </div>
+
+
+          </div>
+
+
+
+          
+
+
+
+        </div>
+          
+      </div>
+
+  </div>
+</main>
+
+
+
+
+
+  <section class="h-200 h-300" >
+
+    {%if the_usercore.username == request.user.username%}
+  
+    <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+         
+          <div class="card rounded-3">
+  
+  
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+  
+              
+  
+              
+                <div class="card rounded-3">
+                  <div class="card-body p-4 p-md-5">
+                    <h3 class="  pb-md-0  ">Profilin</h3>
+                      <div class="form-outline mb-4 mt-5 " style="text-align-center">
+                        <p>Burada, profilinizin özelliklerini ve fotoğraflarınızı değiştirebilirsiniz.</p>
+                  </div>
+    </div>
+                </div>
+              
+  
+  
+  
+         
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-8 col-xl-6">
+           
+            <div class="card rounded-3">
+  
+  
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">{% if the_usercore.user_type == 2 %} {{the_usercore.username}} {% elif the_usercore.user_type == 3 %} {{the_usercore.username}}  {% elif the_usercore.user_type == 4 %} {{the_usercore.username}}{% endif %} Genel Bilgileri</h3>
+    
+  
+                  <div class="form-outline mb-4 " style="text-align-center"> Kullanıcı Tipi : {% if the_usercore.user_type == 2 %} Öğrenci {% elif the_usercore.user_type == 3 %}  Mekan {% elif the_usercore.user_type == 4 %}  Topluluk {% endif %}</div>
+                  <div class="form-outline mb-4 " style="text-align-center">İsim : {{the_user.name}} </div>
+            
+                  {%if the_usercore.username == request.user.username%}
+                  <div class="form-outline mb-4" style="text-align-center"> Kullanıcı Bakiyesi : {{the_user.money}} TL</div>
+                  <input class=" btn btn-success btn-sm mb-md-5"style="float:right" type="button" onclick="location.href='/account/co/update/{{the_usercore.username}}';"  value="Düzenle" />
+                  
+                  {%endif%}
+                  <div class="form-outline  mt-5" style=" text-align-center"><br><hr></div>
+                  <div class="form-outline mb-4 mt-5" style="text-align-center"> Kullanıcı Puanı : {{the_user.ranking}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    {%else%}
+  
+      <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-8 col-xl-6">
+           
+            <div class="card rounded-3">
+  
+  
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+  
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">{% if the_usercore.user_type == 2 %} {{the_usercore.username}} {% elif the_usercore.user_type == 3 %} {{the_usercore.username}} {% endif %} Genel Bilgileri</h3>
+    
+                  <div class="form-outline mb-4 " style="text-align-center"> Kullanıcı Tipi : {% if the_usercore.user_type == 2 %} Öğrenci {% elif the_usercore.user_type == 3 %}  Mekan {% endif %}</div>
+                  <div class="form-outline mb-4 " style="text-align-center">İsim : {{the_user.name}} </div>
+  
+                  {%if the_usercore.username == request.user.username%}
+                  <div class="form-outline mb-4 mt-5" style="text-align-center"> Bakiyen : {{the_user.money}}</div>
+                  <input class=" btn btn-success btn-sm mb-md-5"style="float:right" type="button" onclick="location.href='/account/c/update/{{the_usercore.username}}';"  value="Düzenle" />
+                  
+                  {%endif%}
+                  <div class="form-outline  mt-5" style=" text-align-center"><br><hr></div>
+                  <div class="form-outline mb-4 mt-5" style="text-align-center"> Kullanıcı Puanı : {{the_user.ranking}}</div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    {%endif%}  
+  
+          <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                  <div class="card-body p-4 p-md-5">
+                    <h3 class=" pb-2 pb-md-0 mb-md-5 "><h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">{% if the_usercore.user_type == 2 %} {{the_usercore.username}} {% elif the_usercore.user_type == 3 %} {{the_usercore.username}} {% endif %} Fotoğrafları</h3></h3>
+  
+           </div>
+          </div>
+  
+                  {%if the_user.pic1%}
+                    <div class="card shadow-lg mb-5" >
+                      <img style="height: 400px; object-fit: cover; bg-dark; border-top-left-radius: .3rem; border-top-right-radius: .3rem; " src="{{the_user.pic1.url}}" alt="">
+                    
+                      <div class="card-body" style="bg-dark">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            {%if the_usercore.username == request.user.username%}
+                            <a type="button" href='{{the_user.pic1.url}}' class="btn btn-sm btn-outline-secondary">Görüntüle</a>
+                            <a type="button" href="/account/c/update/{{the_usercore.username}}" class="btn btn-sm btn-outline-secondary">Değiştir</a>
+                            {%else%}
+                            <a type="button" class="btn btn-sm btn-outline-secondary">Resim-1</a>
+                            {%endif%}
+                          </div>
+                    </div>
+    
+                    
+                  </div></div>
+    
+    
+                  {%else%}
+    
+                  <div class="card shadow-lg mb-5">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+        
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          {%if the_usercore.username == request.user.username%}
+                          <a type="button" href="/account/c/update/{{the_usercore.username}}" class="btn btn-sm btn-outline-secondary">Yükle</a>
+                          {%else%}
+                          <a type="button" class="btn btn-sm btn-outline-secondary">Resim-Yok</a>
+                          {%endif%}
+                        </div>
+                      </div>
+                    </div>
+    
+                  </div>
+                  
+                  {%endif%}
+    
+  
+  
+    
+  
+  
+  
+  
+      
+  
+  
+  
+  
+  
+  
+          </div>
+          
+              </div>
+            </div>
+  
+     
+      
+      <p class=" text-center mt-5 mb-3 text-muted">© 2022–2023</p>
+      <div class="mb-5 mt-5"></div>
+      
+    
+    
+    
+    </section>
+  

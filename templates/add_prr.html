@@ -1,0 +1,220 @@
+{% extends "layout.html" %}{% block scripts%} {% endblock scripts%} {% block body1 %}{% load crispy_forms_tags %}
+
+
+
+
+
+
+
+
+
+  <main class="page-main">
+
+
+
+    <form class="uk-form" method="post">
+        {% csrf_token %} 
+      <div class="uk-grid" data-uk-grid>
+        <div class="uk-width-3-3@l">
+    
+          
+
+          <div class="widjet__body"> 
+    
+
+            
+                <div class="uk-accordion-content">
+                  <div class="uk-grid" data-uk-grid>
+                  <div class="uk-width-1-1@m"> 
+    
+
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><h4>Mekan Aktivitesi Oluştur</h4></div>
+
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><span>Lobi Başlığı</span></div>
+    
+                    <div class="uk-margin"><input class="uk-input"  type="text" min="0" max="30" placeholder="" id="{{ prrform.name }}</div>
+                    
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Etkinlik Adı</span></div>
+    
+                    <div class="uk-margin"><input class="uk-input"  type="text" min="0" max="30" placeholder="örn: canlı müzik" id="{{ prrform.game_type }}</div>
+          
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Aktivite Açıklaması</span></div>
+    
+                    <div class="uk-margin" ><input class="uk-input"  type="text" min="0" max="30" placeholder="" id="{{ prrform.description }}</div>
+                    
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Giriş Fiyatı</span></div>
+
+                    <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="örn: 10" id="{{ prrform.entry_price }}</div>
+          
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Etkinlik Kontenjanı</span></div>
+
+                    <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ prrform.max_ppl_existence }}</div>
+
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Buluşma Zamanı</span></div>
+
+                    <div class="uk-margin"><input class="uk-input" placeholder="" type="datetime-local" id="{{ prrform.m_time }}</div>
+          
+
+                    
+                  </div>
+    
+
+                </div>
+
+
+          </div>
+
+          <div style="margin-bottom:35px;margin-top:35px"><hr></div>
+          
+          
+          <div type="submit" class="uk-margin btn"><button class="uk-button uk-button-danger uk-width-1-1" type="submit" >Lobiyi Oluştur</button></div>
+    
+        </div>
+
+
+        
+    
+      </div>
+    
+    
+      
+    
+    </form>
+    
+    
+    
+    </main>
+
+    <script>
+      var timepicker = UIkit.timepicker(element, { /* options */ });
+    </script>
+    
+{% endblock body1 %}
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5 ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Masa Oyunu Oluşturma</h3>
+
+            
+
+              <form method="post" class=" mb-5 ">
+                {% load crispy_forms_tags %}
+                {% csrf_token %}
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Lobi Başlığı
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ prrform.name }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+                          <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Aktivite Nedir?
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.game_type }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Aktivite Açıklaması
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.description }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Giriş Fiyatı
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.entry_price }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Buluşma Saati
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.m_time }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Kaç Kişi Gelebilir?
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.max_ppl_existence }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                          <button type="submit" class="btn btn-success btn-sm mb-1 mt-5">Lobi Oluştur</button>
+                          
+              </form>
+              
+              
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class=" text-center mt-5 mb-3 text-muted ">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>
+

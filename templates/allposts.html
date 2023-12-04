@@ -1,0 +1,1190 @@
+{% extends "layout.html" %} {% load static %}{% block scripts %} 
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock scripts %} 
+
+
+
+{% block metas %}
+{% endblock metas %}
+
+
+{% block scriptico %}
+
+<style>
+  /* Game Card içerisindeki Grid yapısı */
+  .game-card__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px; /* Butonlar arasında boşluk eklemek için */
+      height: 100%; /* Gridin yüksekliğini tamamen kaplaması için */
+      white-space: pre-wrap;
+  }
+
+  /* Butonların stilleri */
+  .game-card__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ff000010;
+      height: 177px;
+      overflow: hidden; /* Taşan kısımları gizlemek için */
+      position: relative; /* Görsel merkezlemek için */
+  }
+
+  /* Görselleri butonun içine tam sığacak şekilde ölçeklendirme */
+  .game-card__button img {
+      max-width: 200%;
+      max-height: 200%;
+      width: 200px;
+      height: 200px;
+      position: absolute; /* Görsel merkezlemek için */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; /* Görseli sığdırarak kırp */
+  }
+
+.image-wrapper {
+    display: block;
+    width: 130%;
+    padding-top: 130%; /* 1:1 oran */
+    position: relative;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%);
+    object-fit: contain; /* Görseli tamamen sığdırmaya çalışır */
+    object-position: center center; /* Görseli tam ortalamak için */
+}
+
+
+
+
+
+</style>
+
+
+
+{% endblock scriptico %}
+
+
+{% block body1 %}
+
+
+
+<main class="page-main">
+
+
+
+    <div data-uk-filter="target: .js-filter">
+  
+        <ul class="uk-accordion widjet__body" uk-accordion>
+            <li>
+              <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">#{{location}} Wall</button>
+                
+              <div class="uk-accordion-content">
+                <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" href="/wall/" type="button" style="scale: 80%; margin-top: -10px;"><a href="/wall/">Diğer Bölgelere Bak</a></button>
+
+     
+                <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" href="/wall/add" type="button" style="scale: 80%; margin-top: 0px;"> <a href="/wall/add/">Post Paylaş</a> </button>
+                        </div>
+            </li>
+          </ul>
+          
+        <ul class="uk-subnav uk-subnav-pill">
+            <li data-uk-filter-control="[data-type='a']" class=""><a href="">Arkadaşlarımın</a></li>
+            
+            
+            <li data-uk-filter-control="[data-type='b']"><a href="">Paylaştıklarım</a></li>
+
+            <li class="uk-active" data-uk-filter-control=""><a href="">Hepsi</a></li>
+            <li data-uk-filter-control="[data-type='c']"><a href="">Beğendiklerim</a></li>
+            <li data-uk-filter-control="[data-type='d']"><a href="">Bulunduklarım</a></li>
+        </ul>
+  
+
+        <ul id="areaposts-container" class="js-filter uk-grid-small uk-child-width-1-1 uk-child-width-5-5@xl uk-child-width-2-4@l uk-child-width-3-3@m uk-child-width-1-2@s uk-grid uk-grid-stack" data-uk-grid="" style="">
+     
+          {% for post in posts %}
+
+
+
+
+
+          {% if post.picture and post.text %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+          <div class="swiper">
+
+          {% elif post.picture and post.hashtag_croom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          {% elif post.picture and post.hashtag_nroom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          {% elif post.picture and post.hashtag_proom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          {% elif post.text and post.hashtag_croom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          {% elif post.text and post.hashtag_nroom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          {% elif post.text and post.hashtag_proom %}
+          <div data-type="" class="js-popular" style="margin-top: 20px;">
+            <div class="swiper">
+
+          
+          {% else %}
+          
+          <div style="margin-top: 30px;margin-bottom: 30px;"><div><div>
+          {% endif %}
+          
+          
+          <div class="swiper-wrapper">
+          
+          
+          
+          
+          
+            {% if post.picture %}
+          
+          
+              <div class="swiper-slide">
+          
+          
+                <div class="game-card">
+                    <div class="game-card__box" style="min-height: 350px; max-height: 390px;">
+          
+          
+          
+          
+                        <div style="min-height: 320px;" class="game-card__media "><a href="#" ><img src="{{post.picture.url}}" alt="Struggle of Rivalry" /></a></div>
+                        
+          
+          
+                        <div class="game-card__bottom">
+                          <div style="display: flex; flex: 1; justify-content: space-between; align-items: center; min-height: 30px;">
+                            <div style="text-align: left;">
+                              <span>by @{{post.creator}}</span>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                              
+                              
+
+                              <div style="margin-right: 10px; text-align: right;">
+                                <span id="like-count-{{ post.id }}">{{ post.likes.count }}</span>
+                            </div>
+
+
+                              <div>
+          
+
+
+          
+                                {% if request.user in post.likes.all %}
+                          
+                                <div>
+                                  <a href="javascript:void(0);" onclick="toggleLike({{ post.id }});" class="like-button" data-post-id="{{ post.id }}">
+                                      <i class="ico_">
+                                          <img id="like-{{ post.id }}" style="max-height: 20px; margin-right: 5px;" src="{% static 'assets/img/svgico/lovefluid.png' %}" alt="x">
+                                      </i>
+                                  </a>
+                              </div>
+                              
+                                {% elif request.user not in post.likes.all %}
+
+                         
+                                <div>
+                                  <a href="javascript:void(0);" onclick="toggleLike({{ post.id }});" class="like-button" data-post-id="{{ post.id }}">
+                                      <i class="ico_">
+                                          <img id="like-{{ post.id }}" style="max-height: 20px; margin-right: 5px;" src="{% static 'assets/img/svgico/loveempty.png' %}" alt="x">
+                                      </i>
+                                  </a>
+                              </div>
+                              
+                                {% else %}
+            
+                                         
+                                {% endif %}
+            
+                                {% if request.user == post.creator %}
+            
+                                <a href="/wall/delete/{{post.id}}" > <i class="ico_"><img href="/wall/delete/{{post.id}}" style="max-height: 20px;margin-right: 5px;" src="{% static 'assets/img/svgico/delete.svg' %}" alt="x"></i></a>
+                               
+                                {% endif %}
+            
+          
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+          
+                        
+                        
+                 </div>
+          
+                    </div>
+          
+          
+                
+          
+          
+                </div>
+          
+          
+              {% endif %}
+              
+          
+          
+              {% if post.text %}
+              
+          
+          
+              <div class="swiper-slide">
+          
+          
+                <div class="game-card">
+                    <div class="game-card__box" style="min-height: 385px; max-height: 385px;
+                    
+                    {% if post.hashtag_nroom or post.hashtag_croom or post.hashtag_proom %}
+                    
+          
+                    {% else %}
+          
+                    {% if post.creator.user_type == 2 %}
+                
+          
+                    background-image: url({% static 'assets/img/wpback2.png' %}); background-size:contain;
+                    
+                    {% elif post.creator.user_type == 3 %}
+          
+                    background-image: url({% static 'assets/img/wpback3.png' %}); background-size:contain;
+          
+                    {% elif post.creator.user_type == 4 %}
+          
+                    background-image: url({% static 'assets/img/wpback4.png' %}); background-size:contain;
+          
+                    {% endif %}
+          
+                    {% endif %}
+          
+          
+                    " >
+          
+          
+                      <div class="game-card__info"><a href="#">
+                        <div  class="uk-heading-line uk-text-center" ><i class="ico_"><img style="max-height: 30px;margin-right: 5px;" src="{% static 'assets/img/logo.png' %}" alt="x"></i></div>
+          
+                      </a> 
+                                
+          
+          
+          
+                      <div style="min-height: 320px;" class="game-card__media "><a href="#" ><div class="game-card__price" style="margin-top:;"><span class="game-card__genre"> {{post.text}}</span></div></a>
+                    
+                    
+                    
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    </div>
+          
+                      
+          
+                      <div class="game-card__bottom" style="align-items: baseline; margin-top: -80px;">
+                        <div style="display: flex; flex: 1; justify-content: space-between; align-items: center; min-height: 30px;">
+                          <div style="text-align: left;">
+                            <span>by @{{post.creator}}</span>
+                          </div>
+                          <div style="display: flex; align-items: center;">
+                              
+                              
+
+                              <div style="margin-right: 10px; text-align: right;">
+                                <span id="like-count-{{ post.id }}">{{ post.likes.count }}</span>
+                            </div>
+
+
+                              <div>
+          
+          
+                                {% if request.user in post.likes.all %}
+                          
+                                <div>
+                                  <a href="javascript:void(0);" onclick="toggleLike({{ post.id }});" class="like-button" data-post-id="{{ post.id }}">
+                                      <i class="ico_">
+                                          <img id="like-{{ post.id }}" style="max-height: 20px; margin-right: 5px;" src="{% static 'assets/img/svgico/lovefluid.png' %}" alt="x">
+                                      </i>
+                                  </a>
+                              </div>
+                              
+                                {% elif request.user not in post.likes.all %}
+
+                         
+                                <div>
+                                  <a href="javascript:void(0);" onclick="toggleLike({{ post.id }});" class="like-button" data-post-id="{{ post.id }}">
+                                      <i class="ico_">
+                                          <img id="like-{{ post.id }}" style="max-height: 20px; margin-right: 5px;" src="{% static 'assets/img/svgico/loveempty.png' %}" alt="x">
+                                      </i>
+                                  </a>
+                              </div>
+                              
+                                {% else %}
+            
+                                         
+                                {% endif %}
+            
+                                {% if request.user == post.creator %}
+            
+                                <a href="/wall/delete/{{post.id}}" > <i class="ico_"><img href="/wall/delete/{{post.id}}" style="max-height: 20px;margin-right: 5px;" src="{% static 'assets/img/svgico/delete.svg' %}" alt="x"></i></a>
+                               
+                                {% endif %}
+            
+          
+          
+          
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                    
+          
+          
+            
+          
+          
+          
+                            
+          
+                        
+                 </div>
+          
+          
+                 
+          
+                    </div>
+          
+          
+          
+          
+          
+                </div>
+                
+          
+          
+          
+              {% endif %}
+          
+          
+              
+              {% if post.hashtag_croom %}
+              
+              <div class="swiper-slide">
+          
+          
+                <div class="game-card">
+                  <div class="game-card__box" style="min-height: 385px; max-height: 385px; ">
+                    <!-- Grid yapısını içeren div -->
+                    <div class="game-card__grid">
+                      
+                      
+          
+          
+          
+                      <!-- Altta sol alt buton -->
+          
+                      
+                      <div class="game-card__button" style="text-align: center; display: flex; flex-direction: column;">
+          
+                        <a href="#" style="font-size: 80%;margin-top: 5px;"> {{ post.hashtag_croom }}</a>
+                       
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">{{ post.hashtag_croom.place }}</a>
+          
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">  {{ post.hashtag_croom.m_time }}</a>
+                        
+                    </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+                      <!-- Üstte sağ üst buton -->
+                      {% if post.hashtag_croom.place %}
+          
+                      {% if post.hashtag_croom.place.pic1 %}
+          
+                      
+                    <div class="game-card__button" >
+                     
+                      <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_croom.place.pic1.url}}" alt="x"></i></a>
+                      
+                    
+                    </div>
+          
+          
+          
+                      {% else %}
+          
+                      <div class="game-card__button" >
+                     
+                        <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_croom.place.area.pic1.url}}" alt="x"></i></a>
+                        
+                      
+                      </div>
+                      {% endif %}
+          
+                      
+                      {% else %}
+          
+                      <div class="game-card__button" >
+                     
+                        <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_croom.if_its_anywhere.pic1.url}}" alt="x"></i></a>
+                        
+                      
+                      </div>
+          
+                      {% endif %}
+          
+          
+                      <!-- Altta sağ alt buton -->
+          
+          
+          
+          
+          
+                      {% if post.hashtag_croom.game_type.activity_picture %}
+                      
+          
+                        <div class="game-card__button" >
+                     
+                            <a href="#" > <i class="ico_"><img style="width: 80%; height: 80%;" src="{{post.hashtag_croom.game_type.activity_picture.url}}" alt="x"></i></a>
+                            
+                          
+                          </div>
+                        
+                          
+                      {% else %}  
+                      <div class="game-card__button" style="text-align: center;">
+                        <a href="#">
+                            <i class="ico_">
+                                <div style="width: 177px; height: 177px; overflow: hidden;">
+                                    <img style="width: 80%; height: 80%;" src="/static/assets/img/notnormal.png" alt="x">
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+          
+                      {% endif %}
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+                      <div class="game-card__button creat-list-btn" style="text-align: center; margin-top: -0px;" href="/activities/{{value.id}}c">
+                        
+                        <i class="ico_add-square"></i><a href="/activities/{{post.hashtag_croom.id}}c">Lobiye Bak</a>
+          
+                      </div>
+          
+          
+          
+          
+          
+                    </div>
+                  </div>
+            
+                      
+                        
+                        
+                        
+                        
+                 </div>
+          
+                    </div>
+                
+                
+              {% endif %}
+          
+          
+              {% if post.hashtag_nroom %}
+              
+              <div class="swiper-slide">
+              
+              
+                <div class="game-card">
+                  <div class="game-card__box" style="min-height: 385px; max-height: 385px; ">
+                    <!-- Grid yapısını içeren div -->
+                    <div class="game-card__grid">
+                      
+                      
+              
+              
+              
+                      <!-- Altta sol alt buton -->
+              
+                      
+                      <div class="game-card__button" style="text-align: center; display: flex; flex-direction: column;">
+              
+                        <a href="#" style="font-size: 80%;margin-top: 5px;"> {{ post.hashtag_nroom }}</a>
+                       
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">{{ post.hashtag_nroom.place }}</a>
+              
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">  {{ post.hashtag_nroom.m_time }}</a>
+                        
+                    </div>
+              
+              
+              
+                      <!-- Üstte sağ üst buton -->
+                      {% if post.hashtag_nroom.place %}
+              
+                      {% if post.hashtag_nroom.place.pic1 %}
+              
+                      
+                    <div class="game-card__button" >
+                     
+                      <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_nroom.place.pic1.url}}" alt="x"></i></a>
+                      
+                    
+                    </div>
+              
+              
+              
+                      {% else %}
+              
+                      <div class="game-card__button" >
+                        <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_nroom.place.area.pic1.url}}" alt="x"></i></a>
+              
+                    </div>
+          
+                      {% endif %}
+              
+                      {% else %}
+          
+                      <div class="game-card__button" >
+                        <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_nroom.if_its_anywhere.pic1.url}}" alt="x"></i></a>
+              
+                    </div>
+          
+                      {% endif %}
+              
+              
+                      <!-- Altta sağ alt buton -->
+              
+              
+              
+              
+              
+                      {% if post.hashtag_nroom.game_type.activity_picture %}
+                      
+              
+                        <div class="game-card__button" >
+                     
+                            <a href="#" > <i class="ico_"><img style="margin-top:" src="{{post.hashtag_nroom.game_type.activity_picture.url}}" alt="x"></i></a>
+                            
+                          
+                          </div>
+                        
+                          
+                      {% else %}  
+          
+                      <div class="game-card__button" style="text-align: center;">
+                        <a href="#">
+                            <i class="ico_">
+                                <div style="width: 177px; height: 177px; overflow: hidden;">
+                                    <img style="width: 80%; height: 80%;" src="/static/assets/img/consumers3.png" alt="x">
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                    
+                      {% endif %}
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                      <div class="game-card__button creat-list-btn" style="text-align: center; margin-top: -0px;" href="/activities/{{value.id}}n">
+                        
+                        <i class="ico_add-square" ></i><a href="/activities/{{post.hashtag_nroom.id}}n">Lobiye Bak</a>
+              
+                      </div>
+              
+              
+              
+              
+              
+                    </div>
+                  </div>
+              
+                      
+                        
+                        
+                        
+                        
+                 </div>
+              
+                    </div>
+              
+                         
+                
+              {% endif %}
+          
+          
+              {% if post.hashtag_proom %}
+              
+              <div class="swiper-slide">
+              
+              
+                <div class="game-card">
+                  <div class="game-card__box" style="min-height: 385px; max-height: 385px; ">
+                    <!-- Grid yapısını içeren div -->
+                    <div class="game-card__grid">
+                      
+                      
+              
+              
+              
+                      <!-- Altta sol alt buton -->
+              
+                      
+                      <div class="game-card__button" style="text-align: center; display: flex; flex-direction: column;">
+              
+                        <a href="#" style="font-size: 80%;margin-top: 5px;"> {{ post.hashtag_proom }}</a>
+                       
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">{{ post.hashtag_proom.place }}</a>
+              
+                        
+                        
+                        {% if post.hashtag_proom.contact %} 
+                        
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">  
+                        {{ post.hashtag_proom.contact }}
+                        </a>                
+                        {% else %}
+                        {% endif %} 
+              
+          
+                        <a href="#" style="font-size: 80%;margin-top: 5px;">  {{ post.hashtag_proom.m_time }}</a>
+              
+                     
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+                      <!-- Üstte sağ üst buton -->
+                      {% if post.hashtag_proom.if_its_anywhere.pic1 %}
+              
+          
+              
+                      
+                    <div class="game-card__button" >
+                     
+                      <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_proom.if_its_anywhere.pic1.url}}" alt="x"></i></a>
+                      
+                    
+                    </div>
+              
+              
+              
+                      {% else %}
+              
+                      <div class="game-card__button" >
+                     
+                        <a href="#" > <i class="ico_"><img style="margin-top: size: 150%;" src="{{post.hashtag_proom.if_its_anywhere.area.pic1.url}}" alt="x"></i></a>
+                        
+                      
+                      </div>
+                      {% endif %}
+              
+          
+              
+              
+                      <!-- Altta sağ alt buton -->
+              
+              
+              
+              
+              
+                      {% if post.hashtag_proom.game_type.activity_picture %}
+                      
+              
+                        <div class="game-card__button" >
+                     
+                            <a href="#" > <i class="ico_"><img style="margin-top:" src="{{post.hashtag_proom.game_type.activity_picture.url}}" alt="x"></i></a>
+                            
+                          
+                          </div>
+                        
+                          
+                      {% else %}  
+                      <div class="game-card__button" style="text-align: center;">
+                        <a href="#">
+                            <i class="ico_">
+                                <div style="width: 177px; height: 177px; overflow: hidden;">
+                                    <img style="width: 80%; height: 80%;" src="/static/assets/img/consumers3.png" alt="x">
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                      {% endif %}
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                      <div class="game-card__button creat-list-btn" style="text-align: center; margin-top: -0px;" href="/activities/{{value.id}}p">
+                        
+                        <i class="ico_add-square"></i><a href="/activities/{{post.hashtag_proom.id}}p">Lobiye Bak</a>
+              
+                      </div>
+              
+              
+              
+              
+              
+                    </div>
+                  </div>
+              
+                      
+                        
+                        
+                        
+                        
+                 </div>
+              
+                    </div>
+             
+              {% endif %}
+          
+              {% if post.picture and post.text %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+    
+          
+              {% elif post.picture and post.hashtag_croom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+  
+          
+              {% elif post.picture and post.hashtag_nroom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+
+            </div>
+          
+              {% elif post.picture and post.hashtag_proom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+
+          
+              {% elif post.text and post.hashtag_croom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+
+          
+              {% elif post.text and post.hashtag_nroom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+
+          
+              {% elif post.text and post.hashtag_proom %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+            </div>
+      
+          
+            {% else %}
+          
+          </div></div></div>
+              {% endif %}                         
+            </div>
+          {% endfor %}
+   
+          </ul>
+  
+          <div class="uk-accordion widjet__body" style="margin-top: 50px;">
+
+            <button style="margin-top: 0px;" class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" id="load-more-button">Daha Fazla Yükle</button>
+        </div>
+ 
+    
+    </div>
+  </main>
+
+
+
+
+
+
+  {% block alt1 %}
+ <script>
+
+$(document).ready(function() {
+    var loading = false;
+    var page = 2;
+
+    function loadMoreContent() {
+        if (!loading) {
+            loading = true;
+            $.ajax({
+                url: window.location.pathname + 'load-more-posts/',
+                type: 'GET',
+                data: { page: page },
+                success: function(data) {
+                    if (data.html_content) {
+                        $("#areaposts-container").append(data.html_content);
+                        page++;
+                        loading = false;
+                    } else {
+                        $("#load-more-button").hide();
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("AJAX error:", textStatus, errorThrown);
+                    loading = false;
+                }
+            });
+        }
+    }
+
+    $("#load-more-button").click(function() {
+        loadMoreContent();
+    });
+  });
+
+
+</script>
+  
+
+<script>
+
+function toggleLike(postId) {
+    const likeButton = document.querySelector(`.like-button[data-post-id="${postId}"]`);
+    $.ajax({
+        type: 'GET',
+        url: `/wall/toggle-like/${postId}/`,
+        success: function(data) {
+            const likeCountElement = document.getElementById(`like-count-${postId}`);
+            const likeIcon = document.getElementById(`like-${postId}`);
+            
+            if (data.is_liked) {
+                likeIcon.src = '/static/assets/img/svgico/lovefluid.png';
+            } else {
+                likeIcon.src = '/static/assets/img/svgico/loveempty.png';
+            }
+
+            likeCountElement.textContent = data.likes_count;
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+</script>
+
+
+
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const communitySearchInput = document.getElementById("community-search");
+  const gridItems = document.querySelectorAll(".grid-item");
+
+  communitySearchInput.addEventListener("input", function() {
+    const searchTerm = communitySearchInput.value.toLowerCase();
+
+    gridItems.forEach(function(gridItem) {
+      const communityName = gridItem.querySelector(".overlay h4").textContent.toLowerCase();
+
+      if (communityName.includes(searchTerm)) {
+        gridItem.style.display = "block";
+      } else {
+        gridItem.style.display = "none";
+      }
+    });
+  });
+});
+
+
+</script>
+  {% endblock alt1 %}
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="swiper-slide">
+    <div class="game-card --horizontal">
+        <div class="game-card__box" style="background-color: rgb(245, 239, 217)">
+          
+          <div class="game-card__media child-width-5-5@l"><a href="/activities/{{post.hashtag_croom.id}}p"><img src="/static/assets/img/idkman.png" style="width: 80%;height:80%; margin-top:-15px;" alt="Alien Games" /></a></div>
+
+
+
+            <div class="game-card__info"><a href="#">
+      <div  class="uk-heading-line uk-text-center" ><span>Açıklama</span></div>
+
+    </a> 
+                
+
+
+
+
+
+
+              <div class="game-card__price"><span class="game-card__genre"> {{post.hashtag_croom.description}}</span></div>
+
+
+         
+
+
+              <div class="game-card__bottom ">
+                <button class="creat-list-btn" href="/activities/{{post.hashtag_croom.id}}p"><i class="ico_add-square"></i><a href="/activities/{{post.hashtag_croom.id}}p">Devamını Oku</a></button>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if post.hashtag_nroom or post.hashtag_croom or post.hashtag_proom  %}
+
+<div class="swiper-slide">
+
+
+  <div class="game-card">
+      <div class="game-card__box" style="min-height: 350px; max-height: 390px;">
+
+
+
+          {% if post.picture %}
+
+          <div style="min-height: 320px;" class="game-card__media "><a href="#" ><img src="{{post.picture.url}}" alt="Struggle of Rivalry" /></a></div>
+     
+          {% elif post.hashtag_croom %}
+
+
+          {% if post.hashtag_croom.game_type.activity_picture %}
+
+          <div style="min-height: 320px;" class="game-card__media "><a href="#" ><img src="{{post.hashtag_croom.game_type.activity_picture.url}}" alt="Struggle of Rivalry" /></a></div>
+          
+          {% endif %}
+
+          {% else %}
+          <div style="min-height: 320px;" class="game-card__media "><a href="#" ><img src="/static/assets/img/postifnone.png" alt="Struggle of Rivalry" /></a></div>
+
+          {% endif %}
+          
+
+
+          <div class="game-card__bottom">
+            <div style="display: flex; flex: 1; justify-content: space-between; align-items: center; min-height: 30px;">
+              <div style="text-align: left;">
+                <span>by @{{post.creator}}</span>
+              </div>
+              <div style="display: flex; align-items: center;">
+                <div style="margin-right: 10px; text-align: right;">{{post.likes.count}}</div>
+                <div>
+
+
+                  {% if request.user in post.likes.all %}
+                  <div>
+                  <a href="/wall/unlike/{{post.id}}"> <i class="ico_"><img style="max-height: 20px;margin-right: 5px;" src="{% static 'assets/img/svgico/lovefluid.png' %}" alt="x"></i></a>
+                </div>
+                  {% elif request.user not in post.likes.all %}
+                  <div>
+                  <a href="/wall/like/{{post.id}}"> <i class="ico_"><img style="max-height: 20px;margin-right: 5px;" src="{% static 'assets/img/svgico/loveempty.png' %}" alt="x"></i></a>
+                </div>
+                  {% else %}
+
+                  {% endif %}
+              
+                  {% if request.user == post.creator %}
+                  <div>
+                  <a href="/wall/delete/{{post.id}}"> <i class="ico_"><img style="max-height: 20px;margin-right: 5px;" src="{% static 'assets/img/svgico/delete.svg' %}" alt="x"></i></a>
+                </div>
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          
+   </div>
+
+      </div>
+
+
+  
+
+
+  </div>
+
+{% endif %}

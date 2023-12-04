@@ -1,0 +1,435 @@
+{% extends "layout.html" %} {% load static %}{% block scripts %} {% endblock scripts %} {% block body1 %}
+
+<main class="page-main">
+
+
+
+  <ul class="uk-accordion widjet__body" uk-accordion>
+    <li>
+      <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">Sayfa Kılavuzu</button>
+        
+      <div class="uk-accordion-content">
+        <p>1 - Burada, kişileri onaylayacaksınız ya da reddedeceksiniz.</p>
+      </div>
+    </li>
+  </ul>
+
+
+  <div class="uk-accordion widjet__body" style=" margin-bottom: 15px;">    <nav class="uk-navbar-container"  uk-navbar>
+    <div class="uk-navbar-left">
+
+        <div class="uk-navbar-item">
+            <form class="uk-search uk-search-navbar">
+                <span uk-search-icon></span>
+                <input class="uk-search-input"  type="text" id="search-bar" placeholder="Kişi Ara">
+            </form>
+        </div>
+
+    </div>
+</nav>
+</div>
+
+
+  <div class="uk-grid uk-grid-stack" data-uk-grid="">
+
+
+
+    
+
+ 
+      <div class="uk-width-2-3@xl uk-first-column">
+          <div class="widjet --filters">
+
+
+      
+                
+
+
+            <div class="game-card__box --active" style="margin-top: 5px;">
+
+              <div class="game-card__rating-and-price uk-grid uk-grid-small uk-child-width-1-2@m uk-grid-stack" style="margin-bottom:-80px">
+              <a href="#">
+                  <div  class="uk-heading-line uk-text-center" ><span>Kişiler</span></div>
+
+                </a>    </div>         
+
+
+
+
+              <div class="uk-grid uk-grid-small uk-child-width-1-2@m uk-grid-stack" data-uk-grid="">
+
+               
+                <div class="uk-first-column">
+                  {% for people in the_usercores.all %}
+                    <div class=" user-item --active " style="margin-top: 10px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+                      {% if people.verify_pic %}
+                      <div class="user-item__avatar"> <a href="{{people.verify_pic.url}}"><img src="{{people.verify_pic.url}}" alt="profile"></a></div>
+                      {% endif %}
+
+                        <div class="user-item__name">
+                            <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+                        </div>
+
+                        <div class="friend-requests-item__action">
+
+                          {% if people.verify == False %}
+                          <button class="confirm " type="button" onclick="location.href='/account/verifier/{{people.username}}/y';"><i class="ico_add-square"></i></button>
+  
+                          {% else %}
+
+                          <button class="reject" type="button" onclick="location.href='/account/verifier/{{people.username}}/n';"><i class="ico_trash"></i></button>
+                          {% endif %}               
+                        </div>
+                       
+                    </div>
+                    {% endfor %}
+                </div>
+
+                
+            </div>
+
+
+
+          
+
+      </div></div></div></div>
+
+
+
+
+</main>
+
+
+
+{% endblock body1 %}
+
+{% block alt1 %}
+
+<script>
+  function applySearchAndHideFunctionality() {
+      var searchBar = $("#search-bar");
+      var activityCards = $(".xx");
+      var swipers = $(".swiper-pagination");
+
+      searchBar.on("input", function() {
+          var searchText = searchBar.val().toLowerCase();
+
+          activityCards.each(function() {
+              var cardText = $(this).text().toLowerCase();
+
+              if (cardText.includes(searchText)) {
+                  $(this).show();
+              } else {
+                  $(this).hide();
+              }
+          });
+
+          if (searchText === "") {
+              swipers.show();
+          } else {
+              swipers.hide();
+          }
+      });
+  }
+
+  $(document).ready(function() {
+      applySearchAndHideFunctionality();
+  });
+
+  $(document).on("ajaxSuccess", function() {
+      applySearchAndHideFunctionality();
+  });
+</script>
+{% endblock alt1 %}
+
+
+
+
+
+
+
+{% if people in the_user.friends.all %}
+{% else %}
+{% if people in the_user.imbanned.all %}
+{% else %}
+{% if people|safe != request.user|safe %}
+
+<div class="widjet__body">
+    <ul class="friend-requests-list">
+        <li class="friend-requests-item">
+          {% if people.pic1 %} 
+          <div class="user-info__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+        {% else %} 
+        <div class="user-info__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+        {% endif %}
+
+            <div class="friend-requests-item__name"><a href="/account/c/{{people.username}}">@{{people}} </a></div>
+            <div class="friend-requests-item__action">
+
+
+
+              {% if people in the_user.friends.all  %}
+              <button class="reject" type="button " onclick="location.href='/account/c/{{request.user}}/friends/fout/{{people.username}}/';"> - </button>
+              {% else %}
+              <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/';"><span class="ico_add-square"></span></button>
+              {% endif %}
+              <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/message/{{people.username}}/';"><i class="ico_chats"></i></button>
+
+              {% if people in the_user.ibanned.all  %}
+              <button class="confirm " type="button" onclick="location.href='/account/c/{{request.user}}/friends/reban/{{people.username}}/';"><i class="ico_report"></i></button>
+              {% else %}
+              <button class="reject" type="button" onclick="location.href='/account/c/{{request.user}}/friends/ban/{{people.username}}/';"><i class="ico_report"></i></button>
+              {% endif %}
+              
+            </div>
+          </li>
+    </ul>
+</div>
+
+{% endif %}
+{% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Arkadaş Lobisi</h3>
+
+
+              
+
+              <div class="form-outline mb-4 " style="text-align-center">
+                  <p>Burada, arkadaşlarına bakabilir, Çıkartabilirsin</p>
+              </div>
+
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5"></div>
+</section>
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="  pb-md-0  ">Arkadaşların</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+
+
+          
+
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+          alt="Sample photo">
+
+
+
+          <div class="card-body p-4 p-md-5">
+
+
+              {% if the_user.friends.count > 0  %}
+              {% for people in the_user.friends.all %}
+              <div class="small mb-2"> {{ people }}
+              </div>
+              {% endfor %}
+              {% elif the_user.friends.count == 0  %}
+              <div class="small mb-2"> hiç arkadaşın yok</div>
+
+              {% endif %}
+              
+              
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5"></div>
+</section>
+
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="  pb-md-0  ">Diğer İnsanlar</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+
+
+          
+
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+          alt="Sample photo">
+
+          <div class="card-body p-4 p-md-5">
+              {% for people in all_users%}
+
+
+              
+              {% if people in the_user.imbanned.all %}
+              {% else %}
+              {% if people|safe != request.user|safe %}
+              
+              <div style="background:;" ><strong>{{people}} : </strong> 
+
+                  {% if people in the_user.ibanned.all  %}
+                  <input class=" btn btn-warning btn-sm md-5 ml-4"style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/friends/reban/{{people.username}}/';"  value="Engeli Kaldır" />
+                  {% else %}
+                  <input class=" btn btn-warning btn-sm md-5 ml-4"style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/friends/ban/{{people.username}}/';"  value="Engelle" />
+                  {% endif %}
+
+                  {% if people in the_user.friends.all  %}
+                  <input class=" btn btn-success btn-sm md-5 ml-4 "style="float:right" type="button" onclick="" location.href='/account/c/{{request.user}}/friends/fout/{{people.username}}/;''  value="Arkadaşlıktan Çıkar" />    
+                  {% else %}
+                  <input class=" btn btn-success btn-sm md-5 ml-4 "style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/';"  value="Arkadaşlık İsteğinde Bulun" />    
+                  {% endif %}
+
+              <input class=" btn btn-success btn-sm md-5 ml-4"style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/message/{{people.username}}/';"  value="Mesaj At" />    
+              <hr>
+          </div>
+              {% endif %}
+              {% endif %}
+              
+
+          
+         
+              {% endfor %}
+
+         
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5"></div>
+</section>
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="  pb-md-0  ">Arkadaşlık İstekleri</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="h-200 h-300" >
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+
+
+          
+
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+          alt="Sample photo">
+
+
+
+          <div class="card-body p-4 p-md-5">
+
+
+              {% if the_user.friendsquery.count > 0  %}
+              {% for people in the_user.friendsquery.all %}
+              <div class=""><strong>{{people}} : </strong> 
+                <input class=" btn btn-warning btn-sm md-5 ml-4"style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/no/';"  value="İsteği Reddet" />
+                <input class=" btn btn-success btn-sm md-5 ml-4"style="float:right" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/yes/';"  value="İsteği Onayla" />
+                
+              </div>
+              <hr>
+              {% endfor %}
+              {% elif the_user.friends.count == 0  %}
+
+              {% endif %}
+              
+              
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5"></div>
+</section>
+
+
+
+

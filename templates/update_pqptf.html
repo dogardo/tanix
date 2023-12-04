@@ -1,0 +1,1795 @@
+{% extends "layout.html" %} {% block body1 %}{% load crispy_forms_tags %}
+
+
+
+<main class="page-main">
+
+
+  <div class="uk-grid" data-uk-grid>
+    <div class="uk-width-3-3@l">
+
+
+
+      <div class="widjet__body">
+        <div class="user-info">
+          {% if the_user.pic1 %}
+          <div class="user-info__avatar"><img style="object-fit: cover; width: 100%; height: 100%;" src="{{the_user.pic1.url}}" alt="profile"></div>
+          {%else%}
+          <div class="user-info__avatar"><img src="{{the_user.area.pic1.url}}" alt="profile"></div>
+          {% endif %}
+            
+            <div class="user-info__box">
+                <div class="user-info__title">{{the_user.place_name}}</div>
+                <div class="user-info__text">{{the_user.name}}</div>
+             
+                <div class="user-info__text">{{the_user.university}}</div>
+            </div>
+        </div>
+        
+        {%if the_usercore.username == request.user.username%} <a class="uk-button uk-button-danger" href="/account/p/update/{{the_user.username}}/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+        {%endif  %}
+      </div>  
+
+      
+      <ul class="uk-accordion widjet__body" uk-accordion>
+        <li>
+          <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">Sayfa Kılavuzu</button>
+            
+          <div class="uk-accordion-content">
+            <p>1 - Burada, mekana ait randevu çizelgesi takip edilebilmektedir.</p>
+            <p>2 - Mekan, hangi saatlerde müsait görülebilmektedir.</p>
+            <p>3 - Mekanda düzenlenen diğer etkinlikler görülebilmektedir.
+            </p>
+
+          </div>
+        </li>
+      </ul>
+
+
+      <div class="widjet__body"> 
+      <ul uk-accordion>
+
+
+        <li class="uk-open">
+          <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d1}}</h4></div></a>
+                   <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+            <div class="uk-width-1-2@m"> 
+        
+                <h5>Oyunsuz Masalar</h5>
+        
+                {% if the_user.a11_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a11_existence_of_not_normal_game.count}} / {{the_user.a11_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a11_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a11_existence_of_not_normal_game.count}} /  {{the_user.a11_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>12.00/15.00</h6>
+                {% if the_user.a12_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a12_existence_of_not_normal_game.count}} / {{the_user.a12_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a12_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a12_existence_of_not_normal_game.count}} /  {{the_user.a12_max_table_not_normal}}</p>
+                {% endif %}    
+                
+                <h6>15.00/18.00</h6>
+                {% if the_user.a13_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a13_existence_of_not_normal_game.count}} / {{the_user.a13_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a13_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a13_existence_of_not_normal_game.count}} /  {{the_user.a13_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>18.00/21.00</h6>
+                {% if the_user.a14_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a14_existence_of_not_normal_game.count}} / {{the_user.a14_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a14_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a14_existence_of_not_normal_game.count}} /  {{the_user.a14_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>21.00/24.00</h6>
+                {% if the_user.a15_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a15_existence_of_not_normal_game.count}} / {{the_user.a15_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a15_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a15_existence_of_not_normal_game.count}} /  {{the_user.a15_max_table_not_normal}}</p>
+                {% endif %}
+        
+              </div>
+                
+            
+              <div class="uk-width-1-2@m">     
+                
+                
+                <div class="uk-width-1-2@m"> 
+        
+                  <h5>Oyunlu Masalar</h5>
+        
+                  <h6>9.00/12.00 </h6>
+                  {% if the_user.a11_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a11_existence_of_normal_game.count}} / {{the_user.a11_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a11_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a11_existence_of_normal_game.count}} /  {{the_user.a11_max_table_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a12_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a12_existence_of_normal_game.count}} / {{the_user.a12_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a12_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a12_existence_of_normal_game.count}} /  {{the_user.a12_max_table_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a13_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a13_existence_of_normal_game.count}} / {{the_user.a13_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a13_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a13_existence_of_normal_game.count}} /  {{the_user.a13_max_table_normal}}</p>
+                  {% endif %}
+              
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a14_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a14_existence_of_normal_game.count}} / {{the_user.a14_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a14_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a14_existence_of_normal_game.count}} /  {{the_user.a14_max_table_normal}}</p>
+                  {% endif %}
+      
+      
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a15_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a15_existence_of_normal_game.count}} / {{the_user.a15_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a15_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a15_existence_of_normal_game.count}} /  {{the_user.a15_max_table_normal}}</p>
+                  {% endif %}
+      
+      
+                </div>
+              </div>
+            </div>
+        
+        </li>
+  
+
+
+        <li class="uk-open">
+          <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d2}}</h4></div></a>
+                   <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+            <div class="uk-width-1-2@m"> 
+        
+                <h5>Oyunsuz Masalar</h5>
+        
+                {% if the_user.a21_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a21_existence_of_not_normal_game.count}} / {{the_user.a21_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a21_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a21_existence_of_not_normal_game.count}} /  {{the_user.a21_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>22.00/25.00</h6>
+                {% if the_user.a22_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a22_existence_of_not_normal_game.count}} / {{the_user.a22_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a22_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a22_existence_of_not_normal_game.count}} /  {{the_user.a22_max_table_not_normal}}</p>
+                {% endif %}    
+                
+                <h6>25.00/18.00</h6>
+                {% if the_user.a23_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a23_existence_of_not_normal_game.count}} / {{the_user.a23_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a23_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a23_existence_of_not_normal_game.count}} /  {{the_user.a23_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>18.00/21.00</h6>
+                {% if the_user.a24_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a24_existence_of_not_normal_game.count}} / {{the_user.a24_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a24_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a24_existence_of_not_normal_game.count}} /  {{the_user.a24_max_table_not_normal}}</p>
+                {% endif %}
+                
+                
+                <h6>21.00/24.00</h6>
+                {% if the_user.a25_existence_of_not_normal_game.count != 0 %}
+                <button class="uk-button uk-button-default" type="button"> {{the_user.a25_existence_of_not_normal_game.count}} / {{the_user.a25_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                  {% for value in the_user.a25_existence_of_not_normal_game.all %}
+                  <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <p>{{the_user.a25_existence_of_not_normal_game.count}} /  {{the_user.a25_max_table_not_normal}}</p>
+                {% endif %}
+        
+              </div>
+                
+            
+              <div class="uk-width-1-2@m">     
+                
+                
+                <div class="uk-width-1-2@m"> 
+        
+                  <h5>Oyunlu Masalar</h5>
+        
+                  <h6>9.00/22.00 </h6>
+                  {% if the_user.a21_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a21_existence_of_normal_game.count}} / {{the_user.a21_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a21_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a21_existence_of_normal_game.count}} /  {{the_user.a21_max_table_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>22.00/25.00</h6>
+                  {% if the_user.a22_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a22_existence_of_normal_game.count}} / {{the_user.a22_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a22_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a22_existence_of_normal_game.count}} /  {{the_user.a22_max_table_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>25.00/18.00</h6>
+                  {% if the_user.a23_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a23_existence_of_normal_game.count}} / {{the_user.a23_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a23_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a23_existence_of_normal_game.count}} /  {{the_user.a23_max_table_normal}}</p>
+                  {% endif %}
+              
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a24_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a24_existence_of_normal_game.count}} / {{the_user.a24_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a24_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a24_existence_of_normal_game.count}} /  {{the_user.a24_max_table_normal}}</p>
+                  {% endif %}
+      
+      
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a25_existence_of_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a25_existence_of_normal_game.count}} / {{the_user.a25_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a25_existence_of_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a25_existence_of_normal_game.count}} /  {{the_user.a25_max_table_normal}}</p>
+                  {% endif %}
+      
+      
+                </div>
+              </div>
+            </div>
+        
+        </li>
+  
+     
+  
+  
+  
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d3}}</h4></div></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a31_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a31_existence_of_not_normal_game.count}} / {{the_user.a31_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a31_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a31_existence_of_not_normal_game.count}} /  {{the_user.a31_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a32_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a32_existence_of_not_normal_game.count}} / {{the_user.a32_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a32_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a32_existence_of_not_normal_game.count}} /  {{the_user.a32_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a33_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a33_existence_of_not_normal_game.count}} / {{the_user.a33_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a33_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a33_existence_of_not_normal_game.count}} /  {{the_user.a33_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a34_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a34_existence_of_not_normal_game.count}} / {{the_user.a34_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a34_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a34_existence_of_not_normal_game.count}} /  {{the_user.a34_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a35_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a35_existence_of_not_normal_game.count}} / {{the_user.a35_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a35_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a35_existence_of_not_normal_game.count}} /  {{the_user.a35_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a31_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a31_existence_of_normal_game.count}} / {{the_user.a31_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a31_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a31_existence_of_normal_game.count}} /  {{the_user.a31_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a32_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a32_existence_of_normal_game.count}} / {{the_user.a32_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a32_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a32_existence_of_normal_game.count}} /  {{the_user.a32_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a33_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a33_existence_of_normal_game.count}} / {{the_user.a33_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a33_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a33_existence_of_normal_game.count}} /  {{the_user.a33_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a34_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a34_existence_of_normal_game.count}} / {{the_user.a34_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a34_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a34_existence_of_normal_game.count}} /  {{the_user.a34_max_table_normal}}</p>
+                    {% endif %}
+
+
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a35_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a35_existence_of_normal_game.count}} / {{the_user.a35_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a35_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a35_existence_of_normal_game.count}} /  {{the_user.a35_max_table_normal}}</p>
+                    {% endif %}
+
+
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+  
+  
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d4}}</h4></div></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a41_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a41_existence_of_not_normal_game.count}} / {{the_user.a41_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a41_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a41_existence_of_not_normal_game.count}} /  {{the_user.a41_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a42_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a42_existence_of_not_normal_game.count}} / {{the_user.a42_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a42_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a42_existence_of_not_normal_game.count}} /  {{the_user.a42_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a43_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a43_existence_of_not_normal_game.count}} / {{the_user.a43_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a43_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a43_existence_of_not_normal_game.count}} /  {{the_user.a43_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a44_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a44_existence_of_not_normal_game.count}} / {{the_user.a44_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a44_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a44_existence_of_not_normal_game.count}} /  {{the_user.a44_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a45_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a45_existence_of_not_normal_game.count}} / {{the_user.a45_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a45_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a45_existence_of_not_normal_game.count}} /  {{the_user.a45_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a41_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a41_existence_of_normal_game.count}} / {{the_user.a41_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a41_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a41_existence_of_normal_game.count}} /  {{the_user.a41_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a42_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a42_existence_of_normal_game.count}} / {{the_user.a42_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a42_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a42_existence_of_normal_game.count}} /  {{the_user.a42_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a43_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a43_existence_of_normal_game.count}} / {{the_user.a43_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a43_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a43_existence_of_normal_game.count}} /  {{the_user.a43_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a44_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a44_existence_of_normal_game.count}} / {{the_user.a44_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a44_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a44_existence_of_normal_game.count}} /  {{the_user.a44_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a45_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a45_existence_of_normal_game.count}} / {{the_user.a45_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a45_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a45_existence_of_normal_game.count}} /  {{the_user.a45_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d5}}</h4></div></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a51_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a51_existence_of_not_normal_game.count}} / {{the_user.a51_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a51_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a51_existence_of_not_normal_game.count}} /  {{the_user.a51_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a52_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a52_existence_of_not_normal_game.count}} / {{the_user.a52_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a52_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a52_existence_of_not_normal_game.count}} /  {{the_user.a52_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a53_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a53_existence_of_not_normal_game.count}} / {{the_user.a53_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a53_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a53_existence_of_not_normal_game.count}} /  {{the_user.a53_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a54_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a54_existence_of_not_normal_game.count}} / {{the_user.a54_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a54_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a54_existence_of_not_normal_game.count}} /  {{the_user.a54_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a55_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a55_existence_of_not_normal_game.count}} / {{the_user.a55_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a55_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a55_existence_of_not_normal_game.count}} /  {{the_user.a55_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a51_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a51_existence_of_normal_game.count}} / {{the_user.a51_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a51_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a51_existence_of_normal_game.count}} /  {{the_user.a51_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a52_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a52_existence_of_normal_game.count}} / {{the_user.a52_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a52_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a52_existence_of_normal_game.count}} /  {{the_user.a52_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a53_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a53_existence_of_normal_game.count}} / {{the_user.a53_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a53_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a53_existence_of_normal_game.count}} /  {{the_user.a53_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a54_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a54_existence_of_normal_game.count}} / {{the_user.a54_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a54_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a54_existence_of_normal_game.count}} /  {{the_user.a54_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a55_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a55_existence_of_normal_game.count}} / {{the_user.a55_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a55_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a55_existence_of_normal_game.count}} /  {{the_user.a55_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+
+
+
+
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d6}}</h4></div></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a61_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a61_existence_of_not_normal_game.count}} / {{the_user.a61_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a61_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a61_existence_of_not_normal_game.count}} /  {{the_user.a61_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a62_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a62_existence_of_not_normal_game.count}} / {{the_user.a62_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a62_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a62_existence_of_not_normal_game.count}} /  {{the_user.a62_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a63_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a63_existence_of_not_normal_game.count}} / {{the_user.a63_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a63_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a63_existence_of_not_normal_game.count}} /  {{the_user.a63_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a64_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a64_existence_of_not_normal_game.count}} / {{the_user.a64_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a64_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a64_existence_of_not_normal_game.count}} /  {{the_user.a64_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a65_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a65_existence_of_not_normal_game.count}} / {{the_user.a65_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a65_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a65_existence_of_not_normal_game.count}} /  {{the_user.a65_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a61_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a61_existence_of_normal_game.count}} / {{the_user.a61_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a61_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a61_existence_of_normal_game.count}} /  {{the_user.a61_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a62_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a62_existence_of_normal_game.count}} / {{the_user.a62_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a62_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a62_existence_of_normal_game.count}} /  {{the_user.a62_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a63_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a63_existence_of_normal_game.count}} / {{the_user.a63_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a63_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a63_existence_of_normal_game.count}} /  {{the_user.a63_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a64_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a64_existence_of_normal_game.count}} / {{the_user.a64_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a64_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a64_existence_of_normal_game.count}} /  {{the_user.a64_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a65_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a65_existence_of_normal_game.count}} / {{the_user.a65_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a65_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a65_existence_of_normal_game.count}} /  {{the_user.a65_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+  
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div  class="uk-margin uk-input" style="text-align: center;"><h4 style="margin-top: 15px;">{{d7}}</h4></div></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a71_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a71_existence_of_not_normal_game.count}} / {{the_user.a71_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a71_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a71_existence_of_not_normal_game.count}} /  {{the_user.a71_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a72_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a72_existence_of_not_normal_game.count}} / {{the_user.a72_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a72_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a72_existence_of_not_normal_game.count}} /  {{the_user.a72_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a73_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a73_existence_of_not_normal_game.count}} / {{the_user.a73_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a73_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a73_existence_of_not_normal_game.count}} /  {{the_user.a73_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a74_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a74_existence_of_not_normal_game.count}} / {{the_user.a74_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a74_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a74_existence_of_not_normal_game.count}} /  {{the_user.a74_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a75_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a75_existence_of_not_normal_game.count}} / {{the_user.a75_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a75_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a75_existence_of_not_normal_game.count}} /  {{the_user.a75_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a71_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a71_existence_of_normal_game.count}} / {{the_user.a71_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a71_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a71_existence_of_normal_game.count}} /  {{the_user.a71_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a72_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a72_existence_of_normal_game.count}} / {{the_user.a72_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a72_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a72_existence_of_normal_game.count}} /  {{the_user.a72_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a73_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a73_existence_of_normal_game.count}} / {{the_user.a73_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a73_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a73_existence_of_normal_game.count}} /  {{the_user.a73_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a74_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a74_existence_of_normal_game.count}} / {{the_user.a74_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a74_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a74_existence_of_normal_game.count}} /  {{the_user.a74_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a75_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a75_existence_of_normal_game.count}} / {{the_user.a75_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a75_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a75_existence_of_normal_game.count}} /  {{the_user.a75_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+
+
+
+
+          {%if the_usercore.username == request.user.username%}
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div style="background-color: rgba(68, 14, 14, 0.513);text-align: center;" class="uk-margin uk-input"><h4 style="margin-top: 15px;">{{d8}}</h4></div></a>
+                     <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a81_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a81_existence_of_not_normal_game.count}} / {{the_user.a81_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a81_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a81_existence_of_not_normal_game.count}} /  {{the_user.a81_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a82_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a82_existence_of_not_normal_game.count}} / {{the_user.a82_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a82_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a82_existence_of_not_normal_game.count}} /  {{the_user.a82_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a83_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a83_existence_of_not_normal_game.count}} / {{the_user.a83_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+        
+                    
+                    {% for value in the_user.a83_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a83_existence_of_not_normal_game.count}} /  {{the_user.a83_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a84_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a84_existence_of_not_normal_game.count}} / {{the_user.a84_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a84_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a84_existence_of_not_normal_game.count}} /  {{the_user.a84_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a85_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a85_existence_of_not_normal_game.count}} / {{the_user.a85_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a85_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a85_existence_of_not_normal_game.count}} /  {{the_user.a85_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a81_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a81_existence_of_normal_game.count}} / {{the_user.a81_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a81_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a81_existence_of_normal_game.count}} /  {{the_user.a81_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a82_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a82_existence_of_normal_game.count}} / {{the_user.a82_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a82_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a82_existence_of_normal_game.count}} /  {{the_user.a82_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a83_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a83_existence_of_normal_game.count}} / {{the_user.a83_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a83_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a83_existence_of_normal_game.count}} /  {{the_user.a83_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a84_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a84_existence_of_normal_game.count}} / {{the_user.a84_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a84_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a84_existence_of_normal_game.count}} /  {{the_user.a84_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a85_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a85_existence_of_normal_game.count}} / {{the_user.a85_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a85_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a85_existence_of_normal_game.count}} /  {{the_user.a85_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div style="background-color: rgba(68, 14, 14, 0.513);text-align: center;" class="uk-margin uk-input"><h4 style="margin-top: 15px;">{{d9}}</h4></div></a>
+                     <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a91_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a91_existence_of_not_normal_game.count}} / {{the_user.a91_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a91_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a91_existence_of_not_normal_game.count}} /  {{the_user.a91_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a92_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a92_existence_of_not_normal_game.count}} / {{the_user.a92_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a92_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a92_existence_of_not_normal_game.count}} /  {{the_user.a92_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a93_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a93_existence_of_not_normal_game.count}} / {{the_user.a93_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a93_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a93_existence_of_not_normal_game.count}} /  {{the_user.a93_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a94_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a94_existence_of_not_normal_game.count}} / {{the_user.a94_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a94_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a94_existence_of_not_normal_game.count}} /  {{the_user.a94_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a95_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a95_existence_of_not_normal_game.count}} / {{the_user.a95_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a95_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a95_existence_of_not_normal_game.count}} /  {{the_user.a95_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a91_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a91_existence_of_normal_game.count}} / {{the_user.a91_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a91_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a91_existence_of_normal_game.count}} /  {{the_user.a91_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a92_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a92_existence_of_normal_game.count}} / {{the_user.a92_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a92_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a92_existence_of_normal_game.count}} /  {{the_user.a92_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a93_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a93_existence_of_normal_game.count}} / {{the_user.a93_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a93_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a93_existence_of_normal_game.count}} /  {{the_user.a93_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a94_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a94_existence_of_normal_game.count}} / {{the_user.a94_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a94_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a94_existence_of_normal_game.count}} /  {{the_user.a94_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a95_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a95_existence_of_normal_game.count}} / {{the_user.a95_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a95_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a95_existence_of_normal_game.count}} /  {{the_user.a95_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+
+
+
+
+          <li class="uk-open">
+            <a class="uk-accordion-title" href="#"><div style="background-color: rgba(68, 14, 14, 0.513);text-align: center;" class="uk-margin uk-input"><h4 style="margin-top: 15px;">{{d10}}</h4></div></a>
+                     <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-2@m"> 
+          
+                  <h5>Oyunsuz Masalar</h5>
+          
+                  {% if the_user.a101_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a101_existence_of_not_normal_game.count}} / {{the_user.a101_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a101_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a101_existence_of_not_normal_game.count}} /  {{the_user.a101_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>12.00/15.00</h6>
+                  {% if the_user.a102_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a102_existence_of_not_normal_game.count}} / {{the_user.a102_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a102_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a102_existence_of_not_normal_game.count}} /  {{the_user.a102_max_table_not_normal}}</p>
+                  {% endif %}    
+                  
+                  <h6>15.00/18.00</h6>
+                  {% if the_user.a103_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a103_existence_of_not_normal_game.count}} / {{the_user.a103_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a103_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a103_existence_of_not_normal_game.count}} /  {{the_user.a103_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>18.00/21.00</h6>
+                  {% if the_user.a104_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a104_existence_of_not_normal_game.count}} / {{the_user.a104_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a104_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a104_existence_of_not_normal_game.count}} /  {{the_user.a104_max_table_not_normal}}</p>
+                  {% endif %}
+                  
+                  
+                  <h6>21.00/24.00</h6>
+                  {% if the_user.a105_existence_of_not_normal_game.count != 0 %}
+                  <button class="uk-button uk-button-default" type="button"> {{the_user.a105_existence_of_not_normal_game.count}} / {{the_user.a105_max_table_not_normal}} <span uk-drop-parent-icon></span></button>
+                  <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                    {% for value in the_user.a105_existence_of_not_normal_game.all %}
+                    <p><a href="/activities/{{value.id}}n/">* {{value}}</a></p>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <p>{{the_user.a105_existence_of_not_normal_game.count}} /  {{the_user.a105_max_table_not_normal}}</p>
+                  {% endif %}
+          
+                </div>
+                  
+              
+                <div class="uk-width-1-2@m">     
+                  
+                  
+                  <div class="uk-width-1-2@m"> 
+          
+                    <h5>Oyunlu Masalar</h5>
+          
+                    <h6>9.00/12.00 </h6>
+                    {% if the_user.a101_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a101_existence_of_normal_game.count}} / {{the_user.a101_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a101_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a101_existence_of_normal_game.count}} /  {{the_user.a101_max_table_normal}}</p>
+                    {% endif %}
+                    
+                    
+                    <h6>12.00/15.00</h6>
+                    {% if the_user.a102_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a102_existence_of_normal_game.count}} / {{the_user.a102_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a102_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a102_existence_of_normal_game.count}} /  {{the_user.a102_max_table_normal}}</p>
+                    {% endif %}    
+                    
+                    <h6>15.00/18.00</h6>
+                    {% if the_user.a103_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a103_existence_of_normal_game.count}} / {{the_user.a103_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a103_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a103_existence_of_normal_game.count}} /  {{the_user.a103_max_table_normal}}</p>
+                    {% endif %}
+                
+                    
+                    <h6>18.00/21.00</h6>
+                    {% if the_user.a104_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a104_existence_of_normal_game.count}} / {{the_user.a104_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a104_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a104_existence_of_normal_game.count}} /  {{the_user.a104_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                    <h6>21.00/24.00</h6>
+                    {% if the_user.a105_existence_of_normal_game.count != 0 %}
+                    <button class="uk-button uk-button-default" type="button"> {{the_user.a105_existence_of_normal_game.count}} / {{the_user.a105_max_table_normal}} <span uk-drop-parent-icon></span></button>
+                    <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+                      {% for value in the_user.a105_existence_of_normal_game.all %}
+                      <p><a href="/activities/{{value.id}}c/">* {{value}}</a></p>
+                      {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>{{the_user.a105_existence_of_normal_game.count}} /  {{the_user.a105_max_table_normal}}</p>
+                    {% endif %}
+        
+        
+                  </div>
+                </div>
+              </div>
+          
+          </li>
+          
+          {%endif  %}
+      </ul>
+  
+      
+  
+  
+  
+        </div>
+        
+  
+  
+      </div>
+    </div>
+  
+  
+   
+  
+  </main>
+  
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Hazır Aktiviteli Oyunlar</h3>
+
+
+            <div class="row danger">
+              <div class="col-2">| Gün</div>
+              <div class="col-2">| 9.00-12.00</div>
+              <div class="col-2">| 12.00-15.00</div>
+              <div class="col-2">| 15.00-18.00</div>
+              <div class="col-2">| 18.00-21.00</div>
+              <div class="col-2">| 21.00-24.00 |</div>
+            </div>
+
+<hr>
+            <div class="row danger">
+              <div class=" col-2">Bugün :</div>
+              <div class="col-2">{{the_user.a11_existence_of_normal_game.count}} / {{the_user.a11_max_table_normal}} </div>
+              <div class="col-2">{{the_user.a12_existence_of_normal_game.count}} /  {{the_user.a12_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a13_existence_of_normal_game.count}} /  {{the_user.a13_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a14_existence_of_normal_game.count}} /  {{the_user.a14_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a15_existence_of_normal_game.count}} /  {{the_user.a15_max_table_normal}}</div>
+            </div>
+            
+            
+<hr>
+            <div class="row danger">
+              <div class=" col-2">Yarın :</div>
+              <div class="col-2">{{the_user.a21_existence_of_normal_game.count}} /  {{the_user.a21_max_table_normal}} </div>
+              <div class="col-2">{{the_user.a22_existence_of_normal_game.count}} /  {{the_user.a22_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a23_existence_of_normal_game.count}} /  {{the_user.a23_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a24_existence_of_normal_game.count}} /  {{the_user.a24_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a25_existence_of_normal_game.count}} /  {{the_user.a25_max_table_normal}}</div>
+            </div>
+
+<hr>
+            <div class="row danger">
+              <div class=" col-2">1.Gün :</div>
+              <div class="col-2">{{the_user.a31_existence_of_normal_game.count}} /  {{the_user.a31_max_table_normal}} </div>
+              <div class="col-2">{{the_user.a32_existence_of_normal_game.count}} /  {{the_user.a32_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a33_existence_of_normal_game.count}} /  {{the_user.a33_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a34_existence_of_normal_game.count}} /  {{the_user.a34_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a35_existence_of_normal_game.count}} /  {{the_user.a35_max_table_normal}}</div>
+            </div>
+
+            <hr>
+            <div class="row danger">
+              <div class=" col-2">2.Gün :</div>
+              <div class="col-2">{{the_user.a41_existence_of_normal_game.count}} /  {{the_user.a51_max_table_normal}} </div>
+              <div class="col-2">{{the_user.a52_existence_of_normal_game.count}} /  {{the_user.a52_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a53_existence_of_normal_game.count}} /  {{the_user.a53_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a54_existence_of_normal_game.count}} /  {{the_user.a54_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a55_existence_of_normal_game.count}} /  {{the_user.a55_max_table_normal}}</div>
+            </div>
+
+            <hr>
+            <div class="row danger">
+              <div class=" col-2">3.Gün :</div>
+              <div class="col-2">{{the_user.a41_existence_of_normal_game.count}} /  {{the_user.a51_max_table_normal}} </div>
+              <div class="col-2">{{the_user.a52_existence_of_normal_game.count}} /  {{the_user.a52_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a53_existence_of_normal_game.count}} /  {{the_user.a53_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a54_existence_of_normal_game.count}} /  {{the_user.a54_max_table_normal}}</div>
+              <div class="col-2">{{the_user.a55_existence_of_normal_game.count}} /  {{the_user.a55_max_table_normal}}</div>
+            </div>
+            
+            <hr>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5"></div>
+  
+
+
+
+</section>
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Oyunsuz Aktiviteler</h3>
+
+
+            <div class="row danger">
+              <div class="col-2">| Gün</div>
+              <div class="col-2">| 9.00-12.00</div>
+              <div class="col-2">| 12.00-15.00</div>
+              <div class="col-2">| 15.00-18.00</div>
+              <div class="col-2">| 18.00-21.00</div>
+              <div class="col-2">| 21.00-24.00 |</div>
+            </div>
+
+<hr>
+            <div class="row danger">
+              <div class=" col-2">Bugün :</div>
+              <div class="col-2">{{the_user.a11_existence_of_not_normal_game.count}} / {{the_user.a11_max_table_not_normal}} </div>
+              <div class="col-2">{{the_user.a12_existence_of_not_normal_game.count}} /  {{the_user.a12_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a13_existence_of_not_normal_game.count}} /  {{the_user.a13_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a14_existence_of_not_normal_game.count}} /  {{the_user.a14_max_table_not_normal}}</div>
+              <div class="col-2"></div>
+            </div>
+            
+            
+            <hr>
+            <div class="row danger">
+              <div class=" col-2">Yarın :</div>
+              <div class="col-2">{{the_user.a21_existence_of_not_normal_game.count}} /  {{the_user.a21_max_table_not_normal}} </div>
+              <div class="col-2">{{the_user.a22_existence_of_not_normal_game.count}} /  {{the_user.a22_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a23_existence_of_not_normal_game.count}} /  {{the_user.a23_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a24_existence_of_not_normal_game.count}} /  {{the_user.a24_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a25_existence_of_not_normal_game.count}} /  {{the_user.a25_max_table_not_normal}}</div>
+            </div>
+            <hr>
+
+            <div class="row danger">
+              <div class=" col-2">1.Gün :</div>
+              <div class="col-2">{{the_user.a31_existence_of_not_normal_game.count}} /  {{the_user.a31_max_table_not_normal}} </div>
+              <div class="col-2">{{the_user.a32_existence_of_not_normal_game.count}} /  {{the_user.a32_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a33_existence_of_not_normal_game.count}} /  {{the_user.a33_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a34_existence_of_not_normal_game.count}} /  {{the_user.a34_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a35_existence_of_not_normal_game.count}} /  {{the_user.a35_max_table_not_normal}}</div>
+            </div>
+
+
+            <hr>
+            <div class="row danger">
+              <div class=" col-2">2.Gün :</div>
+              <div class="col-2">{{the_user.a41_existence_of_not_normal_game.count}} /  {{the_user.a51_max_table_not_normal}} </div>
+              <div class="col-2">{{the_user.a52_existence_of_not_normal_game.count}} /  {{the_user.a52_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a53_existence_of_not_normal_game.count}} /  {{the_user.a53_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a54_existence_of_not_normal_game.count}} /  {{the_user.a54_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a55_existence_of_not_normal_game.count}} /  {{the_user.a55_max_table_not_normal}}</div>
+            </div>
+
+            <hr>
+            <div class="row danger">
+              <div class=" col-2">3.Gün :</div>
+              <div class="col-2">{{the_user.a41_existence_of_not_normal_game.count}} /  {{the_user.a51_max_table_not_normal}} </div>
+              <div class="col-2">{{the_user.a52_existence_of_not_normal_game.count}} /  {{the_user.a52_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a53_existence_of_not_normal_game.count}} /  {{the_user.a53_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a54_existence_of_not_normal_game.count}} /  {{the_user.a54_max_table_not_normal}}</div>
+              <div class="col-2">{{the_user.a55_existence_of_not_normal_game.count}} /  {{the_user.a55_max_table_not_normal}}</div>
+            </div>
+            
+            <hr>
+            {%if the_usercore == request.user%}
+
+            <input class=" btn btn-success btn-sm md-5 mt-5"style="float:right" type="button" onclick="location.href='/account/p/query/{{the_usercore.username}}';"  value="Lobiyi Düzenle" />   
+              {%endif%}
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class=" text-center mt-5 mb-3 text-muted">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>

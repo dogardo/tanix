@@ -1,0 +1,188 @@
+{% extends "layout.html" %} 
+
+{%block bodygood %}
+        <li><a href="/activities/add/c">Masa Oyunu Oluştur<span class="sub_icon glyphicon glyphicon-link"></a></li>
+        <li><a href="/activities/add/n">Farklı Aktivite Oluştur<span class="sub_icon glyphicon glyphicon-link"></a></li> 
+          <li><a href="/account/c/{{request.user.username}}/friends/">Arkadaşlar<span class="sub_icon glyphicon glyphicon-link"></a></li>
+{%endblock bodygood %}
+
+
+{% block body1 %}
+{% if request.user.user_type == 4 %}
+<main class="page-main">
+
+
+
+
+  <div data-uk-filter="target: .js-filter">
+      <ul class="uk-subnav uk-subnav-pill">
+          <li class="uk-active" data-uk-filter-control=""><a href="#">Bütün Aktiviteler</a></li>
+          <li data-uk-filter-control="[data-type='spesific']" class=""><a href="#">Spesifik Aktiviteler</a></li>
+          <li data-uk-filter-control="[data-type='table']"><a href="#">Masa Aktiviteleri</a></li>
+          <li data-uk-filter-control="[data-type='placer']"><a href="#">Mekan Aktiviteleri</a></li>
+      </ul>
+
+
+      <ul class="js-filter uk-grid-small uk-child-width-1-1 uk-child-width-5-5@xl uk-child-width-2-4@l uk-child-width-3-3@m uk-child-width-1-2@s uk-grid uk-grid-stack" data-uk-grid="" style="">
+          
+        
+
+        {% for value in all_games_pq %} 
+        {% if value.creator.username|safe == request.user.username|safe %}
+        {% if timenow|date:"U" > value.m_time|date:"U"  %}
+          
+
+        <li data-type="placer" class="uk-grid-margin uk-first-column">
+    
+          <div class="uk-child-width-5-5@l uk-width-5-5@l ">
+              
+              <div class="js-trending">
+                  <div class="swiper">
+                      <div class="swiper-wrapper">
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --horizontal">
+                                  <div class="game-card__box"  style="background-color: rgb(255, 255, 255)">
+                                    {% if value.contact %}
+      
+                                    <div class="game-card__media child-width-5-5@l"><a href="/activities/p/q/{{value.id}}"><img src="/static/assets/img/communities3.png" style="width: 80%;height:80%; margin-top:-15px;" alt="Alien Games" /></a></div>
+      
+      
+                                    {% else %}
+      
+      
+                                    <div class="game-card__media child-width-5-5@l"><a href="/activities/p/q/{{value.id}}"><img src="/static/assets/img/place2.png" style="width: 100%;height:100%; margin-top:-15px;" alt="Alien Games" /></a></div>
+      
+                                    {% endif %}
+      
+                                      <div class="game-card__info"><a class="game-card__title" href="10_game-profile.html">{{value}}</a>
+                                          
+                                          
+      
+                                              <div class="game-card__price"><span> {{value.creator}}</span><span class="game-card__genre"> tarafından, </span></div>
+      
+                                        
+      
+      
+      
+      
+                                          
+                                          <div class="game-card__price"><span> {{value.if_its_anywhere}}</span> <span class="game-card__genre"> konumunda,</span></div>
+                                          <div class="game-card__price"><span> {{value.m_time}}</span> <span class="game-card__genre"> tarihinde,</span></div>
+                                          <div class="game-card__price"><span> {{value.game_type}}</span> <span class="game-card__genre"> aktivitesi düzenleniyor.</span></div>
+                                          
+      
+      
+      
+                                          <div class="game-card__bottom">
+                                            <div class="game-card__price"> <span>  Giriş Fiyatı : {{value.entry_price}} TL</span></div>
+                                            <div class="game-card__users">
+                                                <ul class="users-list">
+                                                    
+                                                    {% for people in value.ppl_existence.all %}
+                                                    {% if people.pic1 %}
+                                                    <li><img src="{{people.pic1.url}}" alt="user"></li>
+                                                    {% else %}
+                                                    <li><img src="/static/assets/img/user-1.png" alt="user"></li>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                   - {{value.ppl_existence.count}} / {{value.max_ppl_existence}}
+                                                   
+                                                </ul>
+                                               
+                                            </div>
+                                        </div>
+      
+                                        <div class="game-card__bottom ">
+                                          <button class="creat-list-btn" href="/activities/p/q/{{value.id}}"><i class="ico_add-square"></i><a href="/activities/p/q/{{value.id}}">Devamını Oku</a></button>
+                                        </div>
+                                        
+                                         
+                                      </div>
+      
+      
+                                  </div>
+      
+      
+                              </div>
+                          </div>
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --horizontal">
+                                  <div class="game-card__box"  style="background-color: rgb(255, 255, 255)">
+                                    
+      
+                                    <div class="game-card__media child-width-5-5@l"><a href="/activities/p/q/{{value.id}}"><img src="/static/assets/img/idkman.png" style="width: 80%;height:80%; margin-top:-15px;" alt="Alien Games" /></a></div>
+      
+      
+      
+      
+                                      <div class="game-card__info">
+                                          
+      
+      
+      
+      
+      
+      
+                                        <div class="game-card__price"><a href="#">
+                                          <div  class="uk-heading-line uk-text-center" ><span>Karar Butonları</span></div>
+        
+                                        </a> </div>
+      
+      
+                                   
+      
+      
+      
+      
+                                        <div class="game-card__bottom ">
+                                          <button class="creat-list-btn" onclick="location.href='/activities/delete/p/q/{{value.id}}';"><i class="ico_add-square"></i><a href='/activities/delete/p/q/{{value.id}}';>Daveti Geri Çek</a></button>
+                                        </div>
+      
+                                        <div class="game-card__bottom ">
+                                          <button class="creat-list-btn" onclick="location.href='/activities/p/q/{{value.id}}/';"><i class="ico_add-square"></i><a href='/activities/p/q/{{value.id}}/';>İstek Detaylarına Bak</a></button>
+                                        </div>
+                                        
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+      
+      
+      
+            
+      
+                      </div>
+                      <div class="swiper-pagination"></div>
+                  </div>
+              </div>
+          </div>
+      
+        </li>
+          {% endif %}
+          {% endif %}
+          {% endfor %}   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+  </div>
+</main>
+
+
+{% endif %}
+{% endblock body1 %}

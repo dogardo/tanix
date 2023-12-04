@@ -1,0 +1,157 @@
+{% extends "layout.html" %} {% load static %}{% block scripts %} {% endblock scripts %} {% block body1 %}
+
+
+
+<main class="page-main">
+
+
+
+  <h3 class="uk-text-lead"></h3>
+  <div class="uk-grid uk-grid-small" data-uk-grid="" style="min-width: 100%;min-height: 100%;margin-top: -20px;">
+
+      <div class="uk-width-3-3@l">
+          <div class="chat-messages-box">
+              <div class="chat-messages-head">
+                  <div class="user-item">
+                      {% if messageto.pic1 %}
+                      <div class="user-item__avatar"><img src="{{messageto.pic1.url}}" alt="user"></div>
+                      {% else %}
+                      <div class="user-item__avatar"><img src="/static/assets/img/profile.png"></div>
+                      {% endif %}
+                      <div class="user-item__desc">
+                          <div class="user-item__name">@{{messageto.username}}</div>
+                      </div>
+                  </div>
+                  <div><a class="ico_call" href="#!"></a><a class="ico_info-circle" href="#!"></a></div>
+              </div>
+              
+
+                {% if the_user.chats.count == 0 %}
+                {% else %}
+
+                <div class="chat-messages-body">
+
+                  {% for msg in real_msg_manager.chatbox.all %}
+      
+                  {% if msg.creator|safe == request.user|safe %}
+                  <div>
+                  <div class="messages-item --friend-message">
+      
+                      <div class="messages-item__text" style="margin-top: 50px;"> {{msg.message_itself}}</div>
+      
+                  </div></div>
+      
+                  {% else %}
+      
+                  <div>
+                  <div class="messages-item --your-message">
+      
+                      <div class="messages-item__text" style="margin-top: 10px;">{{msg.message_itself}}</div>
+      
+                  </div></div>
+      
+                 
+                  {% endif %}
+      
+           
+                  {% endfor %}
+              </div>
+      
+    
+
+                {% endif %}
+
+
+                 
+          
+              <div class="chat-messages-footer">
+                  <form method="post"">
+                    {% csrf_token %} 
+                      <div class="chat-messages-form">
+                          <div class="chat-messages-form-controls"><input class="chat-messages-input" type="text" placeholder="Type a message" id="{{mform.message_itself}}</div>
+                          <div class="chat-messages-form-btn"><button class="ico_message" type="button"></button></div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+
+<section class="h-200 h-300" >
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+
+
+
+          <div class="card-body p-4 p-md-5">
+
+
+            
+              <div class="d-flex w-100 align-items-center justify-content-between">
+                  <h4 class="  pb-md-3  "><strong>Mesajlaşma Bloğu</strong></h4>
+                  
+
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb"></div>
+</section>
+
+<section class="h-200 h-300" >
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div style="" class=" card-body p-4 p-md-5">   
+            
+              {% if the_user.chats.count == 0 %}
+              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <div  class=" d-flex w-100 align-items-center justify-content-between">
+              {% else %}
+              {% for msg in real_msg_manager.chatbox.all %}
+              {{msg.creator}} : {{msg.message_itself}}
+              <br>
+              {% endfor %}
+              {% endif %}
+              <hr>
+              <form  method="post">
+                
+                {% csrf_token %} 
+                {{mform.message_itself}}
+
+                <button type="submit" class=" btn btn-success btn-sm md-5 "style="float:right">Mesajı Yolla</button>
+              </form>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5"></div>
+
+
+  <p class=" text-center mt-5 mb-3 text-muted pt-5" >© 2022–2023</p>
+  <div class="mb-5 mt-5"></div>
+  
+</section>
+
+

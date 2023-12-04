@@ -1,0 +1,284 @@
+{% extends "layout.html" %}{% block scripts%} {% endblock scripts%} {% block body1 %}{% load crispy_forms_tags %}
+
+
+
+<main class="page-main">
+
+  <form class="form" method="post">
+    {% csrf_token %}
+    <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+  
+        <div class="widjet__body">
+  
+          <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-1@m">
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><h4>Grup Aktivite Teklifi</h4></div>
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><span>Lobi Başlığı</span></div>
+                <div class="uk-margin">
+                  <input class="uk-input" type="text" name="name" id="id_name">
+                </div>
+
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Etkinlik Adı</span></div>
+                <div class="uk-margin">
+                  <input class="uk-input" type="text" name="game_type" id="id_game_type">
+                </div>
+
+  
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Aktivite Açıklaması</span></div>
+                <div class="uk-margin">
+                  <input class="uk-input" type="text" name="description" id="id_description">
+                </div>
+  
+               
+  
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-25px;margin-top: 25px;" ><span>Etkinliğin Düzenleneceği Mekan</span></div>
+
+
+
+
+                      <select class="js-select uk-flex-1 uk-input" type="text" name="if_its_anywhere" id="id_if_its_anywhere">
+                  
+                        <option value="{{ prrform.if_its_anywhere }}</option>
+
+          
+                      </select>
+  
+                      <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Bilet Başı Kazancın (TL)</span></div>
+
+
+                <div class="uk-margin">
+                  <input class="uk-input" type="number" name="entry_price" id="id_entry_price">
+                </div>
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Bilet Başı Mekan Kazancı (TL)</span></div>
+
+
+                <div class="uk-margin">
+                  <input class="uk-input" type="number" name="fee" id="id_fee">
+                </div>
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Mekana Ödenecek Para</span></div>
+
+
+                <div class="uk-margin">
+                  <input class="uk-input" type="number" name="pay" id="id_pay">
+                </div>
+
+
+
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Etkinlik Kapasitesi</span></div>
+
+                <div class="uk-margin">
+                  <input class="uk-input" type="number" name="max_ppl_existence" id="id_max_ppl_existence">
+                </div>
+  
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Buluşma Zamanı</span></div>
+
+                <div class="uk-margin">
+                  <input class="uk-input" type="datetime-local" name="m_time" id="id_m_time">
+                </div>
+
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 20px;" ><span>Mekan Sahibine Not</span></div>
+
+                <div class="uk-margin">
+
+                  <input class="uk-input" type="text" name="room_node" id="id_room_node">
+                  
+                </div>
+
+
+
+              </div>
+            </div>
+
+            <div style="margin-bottom:35px;margin-top:35px"><hr></div>
+          
+          
+            <div type="submit" class="uk-margin btn"><button class="uk-button uk-button-danger uk-width-1-1" type="submit" >Lobiyi Öner</button></div>
+      
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+  
+  
+  
+  </main>
+
+
+
+
+  
+
+{% endblock body1 %}
+
+
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5 ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Masa Oyunu Oluşturma</h3>
+
+            
+
+              <form method="post" class=" mb-5 ">
+                {% load crispy_forms_tags %}
+                {% csrf_token %}
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Lobi Başlığı
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ prrform.name }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+                          <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Aktivite Nedir?
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.game_type }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Aktivite Açıklaması
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.description }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Mekan
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.if_its_anywhere }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Giriş Fiyatı
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.entry_price }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Buluşma Saati
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.m_time }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Kaç Kişi Gelebilir?
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.max_ppl_existence }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <ul class="list-unstyled ps-0">
+                              <li class="mb-1">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                  Mekan Sahibine Not Yaz
+                                </button>
+                                <div class="collapse" id="home-collapse" style="">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><div>{{ prrform.room_node }}</div></li>
+
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+
+                          <button type="submit" class="btn btn-success btn-sm mb-1 mt-5">Lobi Oluştur</button>
+                          
+              </form>
+              
+              
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class=" text-center mt-5 mb-3 text-muted ">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>

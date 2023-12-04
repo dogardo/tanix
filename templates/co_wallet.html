@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% load static %}{% block scripts %} {% endblock scripts %} 
+
+
+
+{% block metas %}
+{% endblock metas %}
+
+
+{% block scriptico %}
+{% endblock scriptico %}
+
+
+{% block body1 %}
+
+
+<main class="page-main">
+
+
+
+    <div class="uk-grid" data-uk-grid="">
+        <div class="uk-width-2-3@l uk-first-column">
+            <div class="widjet --wallet">
+                <div class="container">
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-40px;margin-top: 10px;" ><h4 class="uk-text-lead">Cüzdan Bilgilerin</h4></div>
+          
+                </div>
+                <div class="widjet__body">
+                    <div class="wallet-info">
+                        <div class="wallet-value">{{the_user.money}} TL</div>
+                        <div class="wallet-label">{{the_user.username}}</div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="widjet__body" style="margin-top: -20px;">
+                    <button class="creat-list-btn" href=""><i class="ico_add-square"></i><a href="">Bakiye Yükle</a></button>
+                         
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</main>
+
+{% endblock body1 %}

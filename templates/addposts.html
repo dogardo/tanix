@@ -1,0 +1,321 @@
+{% extends "layout.html" %}{% block scripts%} 
+
+
+
+
+
+
+
+
+
+
+{% endblock scripts%} 
+
+
+
+
+
+
+
+
+{% block body1 %}{% load crispy_forms_tags %}
+
+
+<main class="page-main">
+
+
+<ul class="uk-accordion widjet__body" uk-accordion>
+  <li>
+    <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">WallPost Nasıl Atılır?</button>
+      
+    <div class="uk-accordion-content">
+      <p>Dilerseniz Katıldığınız Etkinlikleri Paylaşabilirsiniz: </p>
+      <p>1 - (Zorunlu) Gittiğiniz etkinliklerden birisini seçiniz. </p>
+      <p>2 - (Opsiyonel) Seçtiğiniz etkinlikte çektiğiniz bir fotoğrafı seçiniz.</p>
+      <p>3 - (Opsiyonel) Mesajınızı yazınız. </p>
+      <p>4 - Paylaşınız. SON! </p>
+      <p style="margin-bottom: 10px;">-</p>
+      <p>Dilerseniz, İstediğiniz Duvara Direkt İleti Yollayabilirsiniz: </p>
+      <p>1-  (Zorunlu) Konum duvarını seçiniz.</p>
+      <p>2-  (Opsiyonel) Mesajınızı yazınız.</p>
+      <p>3 - (Opsiyonel) Fotoğrafınızı yükleyiniz.</p>
+      <p>4 - Paylaşınız. SON! </p>
+
+      </p>
+    </div>
+  </li>
+</ul>
+
+
+  <form class="form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+        <div class="widjet__body">
+          <a class="uk-accordion-title" href="#"></a>
+          <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-1@m">
+
+
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: -10px;" ><h4>WallPost Oluşturma</h4></div>
+
+
+
+                <ul uk-accordion>
+                  <li class="uk-open">
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 5px;" ><span>Oyunlu Etkinliklerinden Birisi Hakkında Mı?</span></div>
+                    
+                    <div class="uk-accordion-content">
+            
+
+
+
+
+                      <select class="js-select uk-flex-1 uk-input" type="text" name="croom" id="id_croom">
+                  
+                        {% if wform.place.verify == 0 %}
+                        {% else %}
+                        <option value="{{ wform.croom }}</option>
+                        {%endif%}
+          
+                      </select>
+
+
+                    </div>
+
+                  </li>
+                </ul>
+
+
+
+                <ul uk-accordion>
+                  <li class="uk-open">
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 5px;" ><span>Oyunsuz Etkinliklerinden Birisi Hakkında Mı?</span></div>
+                    
+                    <div class="uk-accordion-content">
+            
+
+
+
+
+                      <select class="js-select uk-flex-1 uk-input" type="text" name="nroom" id="id_nroom">
+                  
+                        {% if wform.place.verify == 0 %}
+                        {% else %}
+                        <option value="{{ wform.nroom }}</option>
+                        {%endif%}
+          
+                      </select>
+
+
+                    </div>
+                  </li>
+                </ul>
+
+
+
+                <ul uk-accordion style="margin-bottom: 25px">
+                  <li class="uk-open">
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: px;" ><span>Mekan ya da Topluluk Etkinliği Hakkında Mı?</span></div>
+                    
+                    <div class="uk-accordion-content">
+            
+
+
+
+
+                      <select class="js-select uk-flex-1 uk-input" type="text" name="proom" id="id_proom">
+                  
+                        {% if wform.place.verify == 0 %}
+                        {% else %}
+                        <option value="{{ wform.proom }}</option>
+                        {%endif%}
+          
+                      </select>
+
+
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+    
+            </div>
+          </div></div>
+          </div>
+          </div>
+
+
+          
+    <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+        <div class="widjet__body">
+          <a class="uk-accordion-title" href="#"></a>
+          <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-1@m">
+          
+                <ul uk-accordion style="margin-bottom: 25px; margin-top: -30px;">
+                  <li class="uk-open">
+                    <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: px;" ><span>Hiçbiri Değilse, O Zaman Hangi Duvar?</span></div>
+                    
+                    <div class="uk-accordion-content">
+            
+
+
+
+
+                      <select class="js-select uk-flex-1 uk-input" type="text" name="plac_es" id="id_plac_es">
+                  
+                        {% if wform.place.verify == 0 %}
+                        {% else %}
+                        <option value="{{ wform.plac_es }}</option>
+                        {%endif%}
+          
+                      </select>
+
+
+                    </div>
+                  </li>
+                </ul>
+
+
+              </div>
+    
+            </div>
+          </div></div>
+          </div>
+          </div>
+      
+
+
+
+    <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+        <div class="widjet__body">
+          <a class="uk-accordion-title" href="#"></a>
+          <div class="uk-accordion-content">
+            <div class="uk-grid" data-uk-grid>
+              <div class="uk-width-1-1@m">
+
+
+
+                <div  class="uk-heading-line uk-text-center" style="margin-top: -25px;margin-bottom:-65px" ><span>Fotoğraf Eklemek İster Misin?</span></div>
+               
+                <div class="js-upload" id="id_picture" uk-form-custom>
+                  {{ wform.picture }}
+                  <button class="uk-accordion-title uk-button uk-button-default uk-width-1-1@ creat-list-btn" style="width:320px;" type="button" tabindex="-1" onclick="showImage()">Tıkla Yükle</button>
+                  <span id="file-name"></span> <!-- Dosya adını gösterecek alan -->
+                </div>
+
+                <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 10px;" ><span>Ne yazmak İstersin?</span></div>
+                
+                <div class="uk-margin">
+                  <input class="uk-input" style="height:320px" type="text" name="text" id="id_text">
+                </div>
+
+  
+
+  
+  
+
+
+
+
+          <div style="margin-bottom:35px;margin-top:35px"><hr></div>
+          <div class="uk-margin btn">
+            <button class="uk-button uk-button-danger uk-width-1-1" type="submit">Paylaş</button>
+
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+
+
+  </form>
+  
+  
+  
+  </main>
+
+
+  
+{% endblock body1 %}
+
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5 ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Farklı Aktivite Lobisi Oluşturma</h3>
+            {% csrf_token %}
+            
+
+              <form method="post" class=" mb-5 ">
+                  {% csrf_token %}       
+
+
+
+
+
+
+
+                          
+
+
+
+
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Ne Yapmak İstiyorsun?
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ wform.game_type }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                          <button type="submit" class="btn btn-success btn-sm mb-1 mt-5">Lobi Oluştur</button>
+                          
+              </form>
+              
+              
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class=" text-center mt-5 mb-3 text-muted ">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>

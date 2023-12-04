@@ -1,0 +1,572 @@
+{% extends "layout.html" %} {% block body1 %}
+
+<main class="page-main">
+  <ul class="uk-breadcrumb">
+      <li><a href="/activities/"><span data-uk-icon="chevron-left" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" stroke-width="1.03" points="13 16 7 10 13 4"></polyline></svg></span><span>Aktiviteler</span></a></li>
+      <li><span> {{room.name}} </span></li>
+  </ul>
+
+  <div class="uk-grid uk-grid-small" data-uk-grid="">
+
+
+      <div class="uk-width-3-3@m uk-first-column" style="margin-bottom: 20px;">
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><h4 class="uk-text-lead">Mekan Görselleri</h4></div>
+
+      </div>
+
+
+
+
+
+          
+          <div class="js-popular">
+                
+  
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+
+
+                  <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                        {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                        {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+                            {% if room.if_its_anywhere.pic1 %}
+                            <div style="min-height: 300px;" class="game-card__media "><a href="{{room.if_its_anywhere.pic1.url}}" ><img src="{{room.if_its_anywhere.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {%else%}
+                            <div  style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.area.pic1.url}}"><img src="{{room.if_its_anywhere.area.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+                    
+                    <div class="swiper-slide">
+                        <div class="game-card">
+                            <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+                                {% if room.if_its_anywhere.pic2 %}
+                                <div style="min-height: 300px;" class="game-card__media "><a href="{{room.if_its_anywhere.pic2.url}}" ><img src="{{room.if_its_anywhere.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {%else%}
+                                <div  style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.area.pic2.url}}"><img src="{{room.if_its_anywhere.area.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="game-card">
+                            <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+                                {% if room.if_its_anywhere.pic3 %}
+                                <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.pic3.url}}"><img src="{{room.if_its_anywhere.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {%else%}
+                             
+                                <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.area.pic3.url}}"><img src="{{room.if_its_anywhere.area.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {% endif %}   
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="game-card">
+                            <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+                                {% if room.if_its_anywhere.pic4 %}
+                                <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.pic4.url}}"><img src="{{room.if_its_anywhere.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {%else%}
+                                <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.area.pic4.url}}"><img src="{{room.if_its_anywhere.area.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {% endif %} 
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="game-card">
+                            <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+                                {% if room.if_its_anywhere.pic5 %}
+                                <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.pic5.url}}"><img src="{{room.if_its_anywhere.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {%else%}
+                                <div style="min-height: 300px;"class="game-card__media"><a href="{{room.if_its_anywhere.area.pic5.url}}"><img src="{{room.if_its_anywhere.area.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                                {% endif %} 
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+      
+
+
+      <div class="container">
+        <div  class="uk-heading-line uk-text-center" style="margin-bottom:-20px;margin-top: 50px;" ><h4 class="uk-text-lead">Lobi Künyesi</h4></div>
+
+    </div>
+
+
+
+        {% if request.user.user_type == 2 %}
+        <div class="uk-width-1-1@m" style="margin-bottom: 20px;"
+
+        
+        
+        >
+          <div class="game-profile-price"  style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+          {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+          {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+        {%if request.user|safe in room.ppl_existence.all|safe %}
+
+        
+      <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+        <span class="ico_shopping-cart"></span>
+        <span><a onclick="location.href='/activities/quit/{{room.id}}p';"> Lobiden Çık - İade : {{room.entry_price}} TL</a></span>
+      </button>
+
+
+        </button>
+
+        {% elif request.user|safe in room.offers.all|safe %}
+
+    
+        
+        <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+          <span class="ico_shopping-cart"></span>
+          <span> <a onclick="location.href='/activities/back/{{room.id}}p';"> Katılma İsteğini Geri Çek</a></span>
+        </button>
+
+
+        {% else %}
+
+        
+
+      
+
+        <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+          <span class="ico_shopping-cart"></span>
+          <span><a onclick="location.href='/activities/request/{{room.id}}p';">Katılmayı İste : {{room.entry_price}} TL</a></span>
+        </button>
+
+        {% endif %}
+        
+
+    </div>
+    </div>
+    {% endif %}
+      <div class="uk-width-1-2@m" style="margin-top: -10px;" >
+
+
+
+
+
+        <ul class="js-filter uk-grid-small uk-child-width-1-1 uk-child-width-5-5@xl uk-child-width-4-4@l uk-child-width-3-3@m uk-child-width-2-2@s uk-grid uk-grid-stack" data-uk-grid="" style="">
+   
+          <li data-type="table" class="uk-grid-margin uk-first-column" style=";">
+
+            <div class="uk-child-width-5-5@l uk-width-5-5@l ">
+      
+              <div class="js-trending">
+                  <div class="swiper">
+                      <div class="swiper-wrapper">
+
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --vertical">
+                                  <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                                  {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                                  {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+                                    
+                                    {% if room.contact %}
+          
+                                    <div class="game-card__media child-width-5-5@l"><a href="/activities/{{value.id}}p"><img src="/static/assets/img/communities3.png" alt="Alien Games" /></a></div>
+
+    
+                                    {% else %}
+
+    
+                                    <div class="game-card__media child-width-5-5@l"><a href="/activities/{{value.id}}p"><img src="/static/assets/img/place2.png"  alt="Alien Games" /></a></div>
+    
+                                    {% endif %}
+                                      
+      
+                                      <div class="game-card__info child-width-5-5@l">
+                                        
+                                        <a class="game-card__title" href="10_game-profile.html">{{value}}</a>
+
+                                        
+                                        
+
+                                          
+                                          
+                                        {% if room.contact %}
+                                        <div class="game-card__price"><span>{{room.contact}}</span><span class="game-card__genre"> tarafından, </span></div>
+                                        {% else %}
+                                        <div class="game-card__price"><span>{{room.creator.place_name}}</span><span class="game-card__genre"> tarafından, </span></div>
+                                        {% endif %}
+
+                                          {% if room.if_its_anywhere %}
+                                          <div class="game-card__price"><span> {{room.creator.place_name}}</span> <span class="game-card__genre">  ismindeki mekanda,</span></div>
+                                          {% elif room.if_its_anywhere %}
+                                          <div class="game-card__price"><span> {{room.if_its_anywhere}}</span> <span class="game-card__genre">  konumundaki belirlenen noktada,</span></div>
+                                          {% endif %}
+                                          <div class="game-card__price"><span> {{room.m_time}}</span> <span class="game-card__genre"> tarihinde,</span></div>
+                                          <div class="game-card__price"><span> {{room.game_type}}</span> <span class="game-card__genre"> aktivitesi</span></div>
+            
+
+
+
+
+                                        <div class="game-card__bottom">
+                                          <div class="game-card__price"> <span>  Depozito Fiyatı: {{room.entry_price}} TL</span></div>
+                                          <div class="game-card__users">
+                                              <ul class="users-list">
+
+                                                  {% for people in room.ppl_existence.all %}
+                                                  {% if people.pic1 %}
+                                                  <li><img src="{{people.pic1.url}}" alt="user"></li>
+                                                  {% else %}
+                                                  <li><img src="/static/assets/img/user-1.png" alt="user"></li>
+                                                  {% endif %}
+                                                  {% endfor %}
+                                                   - {{room.ppl_existence.count}} / {{room.max_ppl_existence}}
+                                                 
+                                              </ul>
+                                             
+                                          </div>
+                                      </div>
+
+
+                                  
+
+                               
+                                      
+                                        
+                                         
+                                      </div>
+
+
+                                  </div>
+
+
+                              </div>
+                          </div>
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --horizontal">
+                                  <div class="game-card__box" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+                                  {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+                                  {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+                                    
+      
+
+
+                                  
+
+      
+                                    <div class="game-card__info"><a href="#">
+                                      <div  class="uk-heading-line uk-text-center" ><span>Açıklama</span></div>
+    
+                                    </a> 
+
+
+
+
+
+
+                                        <div class="game-card__price"><span class="game-card__genre"> {{room.description}}</span></div>
+
+
+    
+                       
+
+
+
+
+
+                                     
+
+
+
+                              
+
+
+                       
+      
+
+        
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+      
+      
+
+            
+      
+                      </div>
+
+              </div>
+          </div>
+
+          </li>   
+         
+        
+        </ul>
+
+
+        
+
+
+
+
+
+      </div>
+
+      <div class="uk-width-1-2@m">
+
+
+      <div class="container" >
+        <div  class="uk-heading-line uk-text-center" style="margin-top: 25px;" ><h4 class="uk-text-lead">Lobideki İnsanlar</h4></div>
+    </div>
+
+        
+       <div class="widjet --friend-requests">
+
+          
+
+
+
+
+        <div class="uk-child-width-1-1@m" style="margin-top: -30px;">
+
+          {% if request.user.user_type == 2 %}
+        
+          {% for people in room.ppl_existence.all %}
+
+          {% if people in the_user.imbanned.all %}
+          {% else %}
+
+          {% if people|safe != request.user|safe %}
+          
+
+
+            <div class="user-item --active" style="margin-top: 10px;" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+
+              {% if people.pic1 %} 
+              <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+            {% else %} 
+            <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+            {% endif %}
+          
+                <div class="user-item__name">
+                    <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+                </div>
+          
+                <div class="friend-requests-item__action">
+                  {% if people in the_user.friends.all  %}
+                
+                  {% else %}
+                  <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/';"><span class="ico_add-square"></span></button>
+                  {% endif %}
+                  <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/message/{{people.username}}/';"><i class="ico_chats"></i></button>
+                        
+                </div>
+               
+            </div>
+          
+          {% elif people|safe == request.user|safe %}
+
+
+          <div class="user-item --active" style="margin-top: 10px;">
+            {% if people.pic1 %} 
+            <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+          {% else %} 
+          <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+          {% endif %}
+        
+              <div class="user-item__name">
+                  <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+              </div>
+        
+              <div class="friend-requests-item__action">
+
+              </div>
+             
+          </div>
+    
+          {% endif %}
+
+          
+          {% endif %}
+         
+          {% endfor %}
+
+          {% elif request.user.user_type == 3 or request.user.user_type == 4 %}
+
+          {% for people in room.ppl_existence.all %}
+
+          {% if people in the_user.imbanned.all %}
+          {% else %}
+          {% if people|safe != request.user|safe %}
+          
+
+
+            <div class="user-item --active" style="margin-top: 10px;" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+            {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+            {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+              {% if people.pic1 %} 
+              <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+            {% else %} 
+            <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+            {% endif %}
+          
+                <div class="user-item__name" >
+                    <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+                </div>
+          
+                <div class="friend-requests-item__action">
+                  {% if people in the_user.friends.all  %}
+                
+                  {% else %}
+                   {% endif %}
+ 
+                </div>
+               
+            </div>
+          
+          
+          {% endif %}
+          {% endif %}
+         
+          {% endfor %}
+
+          {% endif %}
+
+        </div>
+
+
+      </div>
+
+
+
+
+      </div>
+
+
+
+
+      {% if room.contact %}
+
+      {% if request.user|safe == room.contact|safe %}
+      <div class="uk-width-1-2@m">
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" ><h4 class="uk-text-lead" style="margin-bottom: -20px;">Katılma İstekleri</h4></div>
+      </div>
+
+        {% for people in room.offers.all %}
+
+        <div class="user-item --active" style="margin-top: 10px;" style='{% if room.m_time|date:"U" <= timenow|date:"U"|add:"-10800"|date:"U" %} background-color: rgb(219, 121, 99); 
+        {% elif room.m_time|date:"U" <= timenow|date:"U"|add:"-21600"|date:"U" %} background-color: rgb(65, 197, 98);
+        {% else %} background-color: rgb(255, 255, 255);{% endif %}'>
+          {% if people.pic1 %} 
+          <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+        {% else %} 
+        <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+        {% endif %}
+      
+            <div class="user-item__name">
+                <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+            </div>
+      
+            <div class="friend-requests-item__action">
+
+              <button class="confirm" type="button" ><a onclick="location.href='/activities/request/{{room.id}}p/{{people.username}}/y';"><span class="ico_add-square"></a></span></button>
+
+
+
+              <button class="reject" type="button"><a onclick="location.href='/activities/request/{{room.id}}p/{{people.username}}/n';"><i class="ico_report"></i></a></button>
+         
+            </div>
+           
+        </div>
+
+        {% endfor %}
+
+      </div>
+      {% endif %}
+      {% endif %}
+
+
+      {% if room.contact == None %}
+
+      {% if request.user|safe == room.creator|safe %}
+      <div class="uk-width-1-2@m">
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" ><h4 class="uk-text-lead" style="margin-bottom: -20px;">Katılma İstekleri</h4></div>
+      </div>
+
+        {% for people in room.offers.all %}
+
+        <div class="user-item --active" style="margin-top: 10px;">
+          {% if people.pic1 %} 
+          <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+        {% else %} 
+        <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+        {% endif %}
+      
+            <div class="user-item__name">
+                <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+            </div>
+      
+            <div class="friend-requests-item__action">
+
+              <button class="confirm" type="button" ><a onclick="location.href='/activities/request/{{room.id}}p/{{people.username}}/y';"><span class="ico_add-square"></a></span></button>
+
+
+
+              <button class="reject" type="button"><a onclick="location.href='/activities/request/{{room.id}}p/{{people.username}}/n';"><i class="ico_report"></i></a></button>
+         
+            </div>
+           
+        </div>
+
+        {% endfor %}
+
+      </div>
+      {% endif %}
+      {% endif %}
+
+</main>
+
+{% endblock body1 %}

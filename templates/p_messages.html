@@ -1,0 +1,182 @@
+{% extends "layout.html" %} 
+
+
+
+
+
+
+
+
+
+
+
+{% block body1 %} 
+
+
+
+
+
+<main class="page-main">
+
+
+  <div class="uk-grid uk-grid-stack" data-uk-grid="">
+
+    <div class="uk-width-3-3@m uk-grid-margin uk-first-column">
+      <div class="widjet --friend-requests">
+
+        <div class="widjet__head">
+          <h3 class="uk-text-lead">Gelen Mesajlar</h3>
+      </div>
+
+
+
+    {% for value in the_usercore.chats.all %} 
+    {% for inside in value.whos_in.all %}
+                
+{% if request.user.username|safe != inside.username|safe %}
+
+  {% for community in all_communities.all %}
+
+
+    {% if inside.username|safe == community.username|safe%}
+
+    <div class="uk-first-column">
+
+      <div class="user-item --active" style="margin-top: 10px;">
+      {% if community.pic1 %} 
+        <div class="user-item__avatar"><img src="{{community.pic1.url}}" alt="profile"></div>
+      {% else %} 
+      <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+      {% endif %}
+        
+      <div class="user-item__name">
+        <div class="user-item__name"><a href="/account/co/{{community.username}}"><small> @{{community.name}}</small> </a></div>
+      </div>
+      
+      <div class="friend-requests-item__action">
+        <button class="confirm small" type="button" onclick="location.href='/account/pc/{{request.user.username}}/message/{{community.username}}';"><i class="ico_chats"></i></button>
+      </div>
+
+    </div>
+  </div>
+    {% endif %}
+
+
+
+  {% endfor %}
+
+
+
+{% endif %} 
+                
+      
+   
+ 
+
+  
+{% endfor %}{% endfor %}
+
+</div>  </div>  </div>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+
+
+
+
+
+{% if request.user.user_type == 3 %}
+
+
+
+<section class="h-200 h-300" >
+
+
+    <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5"></div>
+</section>
+  
+  
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="  pb-md-0  ">Sana Gelen Bütün Mesajlar</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% for value in the_usercore.chats.all %} 
+
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+
+            <div class="card-body p-4 p-md-5">
+          {% for inside in value.whos_in.all %}
+                
+            {% if request.user.username|safe != inside.username|safe %}
+
+              {% for community in all_communities.all %}
+
+                {% if inside.username|safe == community.username|safe%}
+                <div class="form-outline mb-4 " style="text-align-center">Yollayan : {{community.name}}
+                {% endif %} 
+              {% endfor %}
+                <input class=" btn btn-success btn-sm md-5 "style="float:right" type="button" onclick="location.href='/account/pc/{{request.user.username}}/message/{{inside.username}}';"  value="Mesajlaş" />   
+                <hr>
+                
+            {% endif %} 
+                
+                </div>
+          {% endfor %}
+                
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>
+</section>
+
+
+{% endfor %}   
+  
+
+
+</div>{% endif %}

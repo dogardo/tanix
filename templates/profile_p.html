@@ -1,0 +1,171 @@
+{% extends "layout.html" %} {% block body1 %}
+<main class="page-main">
+  <div class="uk-grid" data-uk-grid>
+      <div class="uk-width-3-3@l">
+          <div class="widjet --profile">
+
+
+
+
+
+          <div class="widjet__body">
+              <div class="user-info">
+                {% if the_user.pic1 %}
+                <div class="user-info__avatar"><img style="object-fit: cover; width: 100%; height: 100%;" src="{{the_user.pic1.url}}" alt="profile"></div>
+                {%else%}
+                <div class="user-info__avatar"><img src="{{the_user.area.pic1.url}}" alt="profile"></div>
+                {% endif %}
+                  
+                  <div class="user-info__box">
+                      <div class="user-info__title">{{the_user.place_name}}</div>
+                      <div class="user-info__text">{{the_user.name}}</div>
+                   
+                      <div class="user-info__text">{{the_user.university}}</div>
+                  </div>
+              </div>
+              
+              {%if the_usercore.username == request.user.username%} <a class="uk-button uk-button-danger" href="/account/p/update/{{the_user.username}}/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+              {%endif  %}
+            </div>  
+            
+
+
+
+
+
+
+
+                <div class="js-popular" style="margin-top: 20px;">
+                
+  
+                  <div class="swiper">
+                      <div class="swiper-wrapper">
+  
+
+
+                        <div class="swiper-slide">
+                          <div class="game-card">
+                              <div class="game-card__box">
+
+                                  {% if the_user.pic1 %}
+                                  <div style="min-height: 300px;" class="game-card__media "><a href="{{the_user.pic1.url}}" ><img src="{{the_user.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                                  {%else%}
+                                  <div  style="min-height: 300px;" class="game-card__media"><a href="{{the_user.area.pic1.url}}"><img src="{{the_user.area.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                                  {% endif %}
+
+                              </div>
+                          </div>
+                      </div>
+
+                          
+                          <div class="swiper-slide">
+                              <div class="game-card">
+                                  <div class="game-card__box">
+  
+                                      {% if the_user.pic2 %}
+                                      <div style="min-height: 300px;" class="game-card__media "><a href="{{the_user.pic2.url}}" ><img src="{{the_user.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {%else%}
+                                      <div  style="min-height: 300px;" class="game-card__media"><a href="{{the_user.area.pic2.url}}"><img src="{{the_user.area.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {% endif %}
+  
+                                  </div>
+                              </div>
+                          </div>
+  
+  
+                          <div class="swiper-slide">
+                              <div class="game-card">
+                                  <div class="game-card__box">
+                                      {% if the_user.pic3 %}
+                                      <div style="min-height: 300px;" class="game-card__media"><a href="{{the_user.pic3.url}}"><img src="{{the_user.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {%else%}
+                                   
+                                      <div style="min-height: 300px;" class="game-card__media"><a href="{{the_user.area.pic3.url}}"><img src="{{the_user.area.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {% endif %}   
+  
+  
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="swiper-slide">
+                              <div class="game-card">
+                                  <div class="game-card__box">
+  
+                                      {% if the_user.pic4 %}
+                                      <div style="min-height: 300px;" class="game-card__media"><a href="{{the_user.pic4.url}}"><img src="{{the_user.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {%else%}
+                                      <div style="min-height: 300px;" class="game-card__media"><a href="{{the_user.area.pic4.url}}"><img src="{{the_user.area.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {% endif %} 
+  
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="swiper-slide">
+                              <div class="game-card">
+                                  <div class="game-card__box">
+  
+                                      {% if the_user.pic5 %}
+                                      <div style="min-height: 300px;" class="game-card__media"><a href="{{the_user.pic5.url}}"><img src="{{the_user.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {%else%}
+                                      <div style="min-height: 300px;"class="game-card__media"><a href="{{the_user.area.pic5.url}}"><img src="{{the_user.area.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                                      {% endif %} 
+  
+                                  </div>
+                              </div>
+                          </div>
+                          
+                      </div>
+                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-pagination"></div>
+                  </div>
+              </div>
+
+
+
+
+          </div>
+
+          <div class="widjet__head" style="margin-top: 50px;">
+            <h3 class="uk-text-lead">Mekan Özellikleri</h3>
+        </div>
+
+
+          <div class="widjet --bio">
+
+              <div class="widjet__body">Konum : {{the_user.area}}</div>
+              <div class="widjet__body">Masa Depozito Fiyatı : {{the_user.min_price}} TL</div>
+              <div class="widjet__body"> <a href="/account/p/query/{{the_user.username}}/ptf">Masa Doluluk Takvimi</a></div>
+            
+              {% if request.user.user_type == 4 %}
+              <div class="widjet__body">Telefon Numarası : {{the_user.phone}}</div>
+              {% endif %}
+
+                
+
+
+            </div>
+
+          </div>
+
+
+      
+
+
+        </div>
+          
+      </div>
+
+  </div>
+</main>
+
+
+
+
+
+
+
+
+  {% endblock body1 %}

@@ -1,0 +1,346 @@
+
+
+
+
+
+
+
+
+{% extends "layout.html" %} {% block body1 %}{% load crispy_forms_tags %}
+
+{%if the_usercore == request.user%}
+
+
+
+
+<main class="page-main">
+
+
+
+<form  method="post">
+    {% csrf_token %} 
+  <div class="uk-grid" data-uk-grid>
+    <div class="uk-width-3-3@l">
+
+      <div class="widjet__body"> 
+      <ul uk-accordion>
+
+        <li>
+            <a class="uk-accordion-title" href="#"><h4>Hepsini Direkt Ayarla</h4></a>
+            <div class="uk-accordion-content">
+
+              <h5>Oyunsuz Masa Sayısı</h5>
+              <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.max_table_not_normal }}</div>
+
+              <h5>Oyunlu Masa Sayısı</h5>
+              <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.max_table_normal }}</div>
+            
+            </div>
+        </li>
+
+        
+
+  
+
+   
+
+
+
+     
+
+
+
+    
+
+
+  
+
+
+
+
+
+<li class="uk-open">
+  <a class="uk-accordion-title" href="#"><h5>{{d8}} </h5></a>
+  <div class="uk-accordion-content">
+    <div class="uk-grid" data-uk-grid>
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunsuz Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a81_max_table_not_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a82_max_table_not_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a83_max_table_not_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a84_max_table_not_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a85_max_table_not_normal }}</div>
+
+      
+    </div>
+
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunlu Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a81_max_table_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a82_max_table_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a83_max_table_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a84_max_table_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a85_max_table_normal }}</div>
+
+      
+    </div>
+  </div>
+
+</li>
+
+
+
+
+<li class="uk-open">
+  <a class="uk-accordion-title" href="#"><h5>{{d9}} </h5></a>
+  <div class="uk-accordion-content">
+    <div class="uk-grid" data-uk-grid>
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunsuz Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a91_max_table_not_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a92_max_table_not_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a93_max_table_not_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a94_max_table_not_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a95_max_table_not_normal }}</div>
+
+      
+    </div>
+
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunlu Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a91_max_table_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a92_max_table_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a93_max_table_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a94_max_table_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a95_max_table_normal }}</div>
+
+      
+    </div>
+  </div>
+
+</li>
+
+
+
+<li class="uk-open">
+  <a class="uk-accordion-title" href="#"><h5>{{d10}} </h5></a>
+  <div class="uk-accordion-content">
+    <div class="uk-grid" data-uk-grid>
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunsuz Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a101_max_table_not_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a102_max_table_not_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a103_max_table_not_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a104_max_table_not_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a105_max_table_not_normal }}</div>
+
+      
+    </div>
+
+    <div class="uk-width-1-2@m"> 
+
+      <h5>Oyunlu Masalar</h5>
+
+      <h6>9.00/12.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a101_max_table_normal }}</div>
+      
+      <h6>12.00/15.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a102_max_table_normal }}</div>
+     
+      <h6>15.00/18.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a103_max_table_normal }}</div>
+
+      <h6>18.00/21.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a104_max_table_normal }}</div>
+
+      <h6>21.00/24.00</h6>
+      <div class="uk-margin"><input class="uk-input"  type="number" min="0" max="30" placeholder="" id="{{ pqform.a105_max_table_normal }}</div>
+
+      
+    </div>
+  </div>
+
+</li>
+
+
+
+
+
+
+
+
+    </ul>
+
+    
+
+
+
+      </div>
+      
+
+
+    </div>
+  </div>
+
+
+  <div type="submit" class="uk-margin btn"><button class="uk-button uk-button-danger uk-width-1-1" type="submit" >Değişiklikleri Kaydet</button></div>
+
+
+</form>
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {%endif%}
+
+
+{% endblock body1 %}
+
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Masa Bilgileri</h3>
+
+            <form  method="post">
+              {% csrf_token %} 
+              <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                      Bütün Masaları Direkt Ayarla
+                    </button>
+                    <div class="collapse" id="home-collapse" style="">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small container">
+                        <li>
+                          <p>Masa Oyunlarına Ayrılan Masa Sayısı</p>
+                          <div>{{ pqform.max_table_normal }}</div>
+                      </li>
+                      <p>Spesifik Oyunlara Ayrılan Masa Sayısı</p>
+                      <li>
+                          <div>{{ pqform.max_table_not_normal }}</div>
+                      </li>
+
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+
+
+  
+
+              
+
+              <button type="submit"class="btn btn-success btn-sm mb-1 mt-5">Değiştir</button>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class=" text-center mt-5 mb-3 text-muted">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>

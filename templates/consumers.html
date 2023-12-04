@@ -1,0 +1,103 @@
+{% extends "layout.html" %} 
+
+{%block bodygood %}
+        <li><a href="/activities/add/c">Masa Oyunu Oluştur<span class="sub_icon glyphicon glyphicon-link"></a></li>
+        <li><a href="/activities/add/n">Farklı Aktivite Oluştur<span class="sub_icon glyphicon glyphicon-link"></a></li> 
+          <li><a href="/account/c/{{request.user.username}}/friends/">Arkadaşlar<span class="sub_icon glyphicon glyphicon-link"></a></li>
+{%endblock bodygood %}
+
+
+{% block body1 %} {% if request.user.user_type == 4 %}
+
+
+
+<section class="h-200 h-300" >
+
+
+    <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Aktiviteler</h3>
+  
+
+                
+
+                <div class="form-outline mb-4 " style="text-align-center">
+                    <p>Burada, istediğiniz aktiviteye giriş yapabilirsiniz.</p>
+                </div>
+
+                <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5"></div>
+</section>
+  
+  
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="  pb-md-0  ">Bütün Öğrenci Hesapları</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% for value in users %} 
+
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+
+
+
+            
+
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+
+
+
+
+            <div class="card-body p-4 p-md-5">
+                <div class="form-outline mb-4 " style="text-align-center">Kullanıcı Adı : {{value.username}} </div>
+                <div class="form-outline mb-4 " style="text-align-center">İsim : {{value.name}} </div>
+                <div class="form-outline mb-4 " style="text-align-center">Üniversite : {{value.university}}</div>
+                <div class="form-outline mb-4 " style="text-align-center">Cinsiyet : {{value.gender}} </div>
+                
+
+                <input class=" btn btn-success btn-sm md-5 "style="float:right" type="button" onclick="location.href='/account/c/{{value.username}}/';"  value="Profili İncele" />   
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>
+</section>
+
+
+{% endfor %}   
+  
+
+
+</div>{% endif %}{% endblock body1 %}

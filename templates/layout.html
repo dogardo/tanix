@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+
+
+  <meta content="Templines" name="author">
+  <meta content="TeamHost" name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="format-detection" content="telephone=no">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+  {% block metas %}
+  {% endblock metas %}
+
+    <title>TANI</title>
+
+    {% block statics %}
+
+  {% load static %}
+  {% endblock statics %}
+
+
+
+  {% block linkformore %}
+
+  <link href="{% static 'assets/img/favicon.png' %}" rel="shortcut icon" type="image/x-icon">
+  <link href="{% static 'assets/css/libs.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/showcase.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+        font-family: "bnkgoth";
+        src: url("static/assets/fonts/bnkgothl.ttf");
+    }
+
+    @font-face {
+        font-family: "candara";
+        src: url("static/assets/fonts/candara.ttf");
+    }
+    </style>
+
+
+
+
+
+</head>
+
+{% endblock linkformore %}
+
+{% block scriptico %}
+
+
+
+{% endblock scriptico %}
+
+
+
+<body>
+
+
+
+
+  
+
+
+
+
+
+
+
+{% block forlogs2 %}
+
+<body class="page-home">
+
+
+{% block forlogs %}
+  <input id="toggle" type="checkbox">
+  <script type="text/javascript">
+      document.getElementById("toggle").addEventListener("click", function() {
+          document.getElementsByTagName('body')[0].classList.toggle("dark-theme");
+      });
+
+  </script>
+
+
+  <!-- Loader-->
+  <div id="page-preloader">
+      <div class="preloader-1">
+          <div class="loader-text">Yükleniyor...</div>
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+          <span class="line line-4"></span>
+          <span class="line line-5"></span>
+          <span class="line line-6"></span>
+          <span class="line line-7"></span>
+          <span class="line line-8"></span>
+          <span class="line line-9"></span>
+      </div>
+
+  </div>
+  <!-- Loader end-->
+
+  <div class="page-wrapper">
+      
+    <header class="page-header" >
+          <div class="page-header__inner">
+              <div class="page-header__sidebar">
+                  <div class="page-header__menu-btn"><button class="menu-btn ico_menu is-active"></button></div>
+
+                  
+                  <div class="page-header__logo">
+
+                    
+                    <a href="#" id="refresh-link">
+
+                    
+                        <img src="/static/assets/img/logo1.png" alt="logo"><span class="page-header__logo_text">TANI</span></div>
+                    </a>
+                    <script>
+                        document.getElementById("refresh-link").addEventListener("click", function(event) {
+                            event.preventDefault(); // Linkin varsayılan tıklama davranışını engelle
+                            location.reload(); // Sayfayı yenile
+                        });
+                        </script>
+              
+
+
+                </div>
+              <div class="page-header__content">
+                  <div class="page-header__search">
+                      <div class="search">
+                          
+     
+                        
+                          
+
+                          
+                      </div>
+                  </div>
+
+                  <a style="margin-right: 10px;" class="profile" href="/wall"><img style="height: 90%;"  src="{% static 'assets/img/svgico/new/wall2.png' %}" alt="x">
+                  </a>
+
+                  <a style="margin-right: 10px;" class="profile" href="/activities/"><img style="height: 80%;" src="{% static 'assets/img/svgico/new/activities2.png' %}" alt="x">
+                  </a>
+                  {% if request.user.is_authenticated %}
+
+
+
+
+                        {% if request.user.user_type == 2 %}
+
+
+                         <a class="profile" href="/account/c/{{request.user.username}}"><img style="height: 80%;" src="{% static 'assets/img/svgico/new/profile2.png' %}" alt="x">
+                            </a>
+
+                        {% elif request.user.user_type == 3 %}
+                        <a class="profile" href="/account/p/{{request.user.username}}"><img style="height: 80%;" src="{% static 'assets/img/svgico/new/profile2.png' %}" alt="x">
+                        </a>
+
+                        {% elif request.user.user_type == 4 %}
+                        <a class="profile" href="/account/co/{{request.user.username}}"><img style="height: 80%;" src="{% static 'assets/img/svgico/new/profile2.png' %}" alt="x">
+                        </a>
+                        {% endif %}
+                        
+                  {% endif %}
+
+              </div>
+          </div>
+
+          {% block searchbar %}
+
+          {% endblock searchbar %}
+
+
+
+
+
+      </header>
+      
+
+
+    
+      <div class="page-content" style="background-image:url('/static/images/background_1.png'); background-size: 300%; padding-bottom: 0px;" >
+
+        {% block asidex %}
+
+          <aside class="sidebar is-show" id="sidebar" style="z-index: 9999;">
+              <div class="sidebar-box">
+                  <ul class="uk-nav">
+                      <li id="home-page-nav"><a href="/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/logo-big.png' %}" alt="x"></i><span>Anasayfa</span></a></li>
+                      
+                      <li><a href="/wall/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/wall.png' %}" alt="x"></i><span>Bölge Duvarı</span></a></li>
+
+                      {% if request.user.is_authenticated %} 
+                      {% else %}
+                      <li><a href="/activities/"> <i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/activities.png' %}" alt="x"></i><span>Bazı Aktivitler</span></a></li>
+                      {% endif %}
+                      {% if request.user.is_authenticated %} {% if request.user.user_type == 2 %}
+
+                      <li class="uk-nav-header">Hesap</li>
+
+                      <li><a href="/account/c/{{request.user}}"><i class="ico_"><img style="height: 120%;" src="{% static 'assets/img/svgico/new/profile.png' %}" alt="x"></i><span>Profil</span></a></li>
+                      <li><a href="/account/c/{{request.user.username}}/friends"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/friends.png' %}" alt="x"></i><span>Arkadaşlar</span></a></li>
+                      <li><a href="/account/p/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/places3.png' %}" alt="x"></i><span>Mekanlar</span></a></li>
+                      <li><a href="/account/my/wallet/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/money.png' %}" alt="x"></i><span>Cüzdan</span></a></li>
+                      <li><a href="/account/logout/"><i class="ico_"><img style="max-height: 120%;;" src="{% static 'assets/img/svgico/new/logout.png' %}" alt="x"></i><span>Çıkış Yap</span></a></li>
+
+                      <li class="uk-nav-header">Aktiviteler</li>
+
+                      <li><a href="/activities/add/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/addgame.png' %}" alt="x"></i><span>Oluştur</span></a></li>
+                      <li><a href="/activities/"> <i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/activities.png' %}" alt="x"></i><span>Katılabileceğin Planlar</span></a></li>
+                      <li><a href="/activities/fast"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/fast.png' %}" alt="x"></i><span>Hızlı Oyun</span></a></li>
+                      
+                      <li><a href="/activities/in/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/waiting.png' %}" alt="x"></i><span>Kabul Bekleyen</span></a></li>
+                      <li><a href="/activities/in/r"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/okbutnotok.png' %}" alt="x"></i><span>Kabul Edilen</span></a></li>
+                      <li><a href="/activities/in/o/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/okreal.png' %}" alt="x"></i><span>Kesinleşmiş</span></a></li>
+                      
+
+
+
+
+                      <li class="uk-nav-header">Support</li>
+                      <li><a href="javascript:void(0)" data-uk-toggle><i class="ico_report"></i><span>Raporla</span></a></li>
+                      <li><a href="javascript:void(0)" data-uk-toggle><i class="ico_help"></i><span>Yardım</span></a></li>
+
+
+                      {% elif request.user.user_type == 3 %}
+
+
+                      <li class="uk-nav-header">Hesap</li>
+
+                      <li><a href="/account/p/{{request.user}}"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/profile.png' %}" alt="x"></i><span>Profil</span></a></li>
+                      <li><a href="/account/p/query/{{request.user}}"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/settings.png' %}" alt="x"></i><span>Masa Ayarları</span></a></li>
+                      <li><a href="/account/p/query/{{request.user}}/ptf"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/time.png' %}" alt="x"></i><span>Randevu Çizelgesi</span></a></li>
+                      <li><a href="/account/p/{{request.user.username}}/messages/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/message.png' %}" alt="x"></i><span>Mesajlar</span></a></li>
+                      <li><a href="/account/my/wallet/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/money.png' %}" alt="x"></i><span>Cüzdan</span></a></li>
+                      <li><a href="/account/logout/"><i class="ico_"><img style="max-height: 120%;;" src="{% static 'assets/img/svgico/new/logout.png' %}" alt="x"></i><span>Çıkış Yap</span></a></li>
+
+                      <li class="uk-nav-header">Aktiviteler</li>
+
+                      <li><a href="/activities/add/p/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/addgame.png' %}" alt="x"></i><span>Oluştur</span></a></li>
+                      <li><a href="/activities/q/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/waiting.png' %}" alt="x"></i><span>Topluluklardan Teklifler</span></a></li>
+                      <li><a href="/activities/p/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/okreal.png' %}" alt="x"></i><span> Düzenlenen Etkinlikler </span></a></li>
+         
+                      
+
+                      {% elif request.user.user_type == 1 %}
+
+                      <li><a href="/admin/"><i class="ico_profile"></i><span>Panele Git</span></a></li>
+                      <li><a href="/account/verifier/"><i class="ico_profile"></i><span>Onay Sekmesi</span></a></li>
+                      <li><a href="/account/logout/"><i class="ico_profile"></i><span>Çıkış Yap</span></a></li>
+
+                      {% elif request.user.user_type == 4 %}
+
+                      <li class="uk-nav-header">Hesap</li>
+
+                      <li><a href="/account/co/{{request.user}}"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/profile.png' %}" alt="x"></i><span>Profil</span></a></li>
+                      <li><a href="/account/p/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/message.png' %}" alt="x"></i><span>Mekanlarla İletişime Geç</span></a></li>
+                      <li><a href="/account/my/wallet/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/money.png' %}" alt="x"></i><span>Cüzdan</span></a></li>
+                      <li class="uk-nav-header">Aktiviteler</li>
+
+                      <li><a href="/activities/add/p/q/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/addgame.png' %}" alt="x"></i><span>İstek Öner</span></a></li>
+                      <li><a href="/activities/p/q/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/waiting.png' %}" alt="x"></i><span>Onay Bekleyen</span></a></li>
+                      <li><a href="/activities/p/n/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/okbutnotok.png' %}" alt="x"></i><span>Onaylanmış/Mevcut</span></a></li>
+                      <li><a href="/activities/p/o/"><i class="ico_"><img style="max-height: 120%;" src="{% static 'assets/img/svgico/new/okreal.png' %}" alt="x"></i><span>Geçmiş</span></a></li>
+                      <li><a href="/account/logout/"><i class="ico_"><img style="max-height: 120%;;" src="{% static 'assets/img/svgico/new/logout.png' %}" alt="x"></i><span>Çıkış Yap</span></a></li>
+
+                      {% endif %} 
+                      
+                      
+                      {% else %}
+
+                      <li class="uk-nav-header">Hesap</li>
+
+                      
+                      <li><a href="/account/register"><i class="ico_"><img style="max-height: 90%; " src="{% static 'assets/img/svgico/new/register.png' %}" alt="x"></i><span>Üyelik Başvurusu</span></a></li>
+                      <li><a href="/account/login"><i class="ico_"><img style="max-height: 90%; margin-right: 5px;" src="{% static 'assets/img/svgico/new/login.png' %}" alt="x"></i><span>Giriş Yap</span></a></li>
+                      {% endif %} 
+                  </ul>
+              </div>
+          </aside>
+
+          
+          {% endblock asidex %}
+
+          {% block bodyinc %}
+
+
+          {% endblock bodyinc %}
+          
+
+         
+          {% block body1 %}
+
+
+          
+          {% endblock body1 %}
+
+          
+       
+        
+      
+        </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+{% endblock forlogs %}
+{% endblock forlogs2 %}
+
+{% block scriptformore %}
+
+<script src="/static/assets/js/libs.js"></script>
+<script src="/static/assets/js/main.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var currentPath = window.location.pathname;
+        var sidebarListElems = document.getElementsByClassName('sidebar-box')[0].querySelectorAll('li');
+        var activeElement = null;
+
+        for (let index = 0; index < sidebarListElems.length; index++) {
+            const element = sidebarListElems[index];
+            const anchorElement = element.querySelector('a');
+
+            if (anchorElement) {
+                const href = anchorElement.getAttribute('href');
+                
+                // Check if the current path matches the link's href
+                if (currentPath === href) {
+                    activeElement = element;
+                    break;
+                }
+
+                // Check if the current path is a subpath of the link's href (e.g., "/a/b" is a subpath of "/a")
+                if (currentPath.startsWith(href) && href !== "/") {
+                    activeElement = element;
+                }
+            }
+        }
+
+        // Add the 'uk-active' class to the active element
+        if (activeElement) {
+            activeElement.classList.add('uk-active');
+        }
+    });
+</script>
+
+
+
+
+
+
+<script>
+    window.onload = function() {
+        var notificationMessage = `{% include "includes/navbar.html" %}`; // Bu, navbar.html dosyasının içeriğini temsil eder
+        
+        if (notificationMessage.trim()) {
+            UIkit.notification({
+                message: notificationMessage,
+                status: 'primary',
+                pos: 'top-right',
+                timeout: 5000,
+                cls: 'my-notification' // Özel stil sınıfınızı burada tanımlayın
+            });
+        }
+    };
+</script>
+
+<style>
+    .my-notification {
+        background-color: #F8F8F8; /* Özel arkaplan rengi */
+        color: #333333; /* Özel metin rengi */
+        border-radius: 5px; /* Köşeleri yuvarlatma */
+        padding: 10px; /* İçerik boşluğu */
+    }
+</style>
+
+
+{% endblock scriptformore %}
+         
+{% block alt1 %}
+
+
+          
+{% endblock alt1 %}
+
+
+</body>
+
+
+</html>

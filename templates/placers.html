@@ -1,0 +1,254 @@
+{% extends "layout.html" %} {% load static %}
+
+
+
+
+{% block body1 %} 
+<main class="page-main">
+
+
+  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-40px;margin-top: 10px;" ><h4 class="uk-text-lead">Mekanlar ve Özellikleri </h4></div>
+  <div class="uk-grid" data-uk-grid>
+
+    
+
+    {% for value in users %} 
+    <div class="uk-width-1-2@l uk-width-1-2@m uk-width-3-3@s">
+        
+        <div class="js-trending">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+
+                    <div class="swiper-slide">
+                        <div class="game-card --horizontal">
+                            <div class="game-card__box">
+                              
+                                {% if value.pic1 %}
+
+                                <div style="min-height: 300px;" class="game-card__media uk-width-1-2@m"><a href="/account/p/{{value.username}}"><img src="{{value.pic1.url}}"  alt="Alien Games" /></a></div>
+
+                                {% else %}
+
+                                <div style="min-height: 300px;" class="game-card__media uk-width-1-2@m"><a href="/account/p/{{value.username}}"><img src="{{value.area.pic1.url}}"  alt="Alien Games" /></a></div>
+
+                                {% endif %}
+
+                                <div class="game-card__info"><a class="game-card__title" href="10_game-profile.html">{{value.place_name}}</a>
+                                    
+                                    {% if request.user.user_type != 2 %}
+                                    <div class="game-card__genre"><strong>Telefon Numarası : </strong>+0 {{value.phone}}</div>
+                                    {% endif %}
+                                    <div class="game-card__rating-and-price">
+                                        <div class="game-card__price"><span> Depozito Fiyatı : {{value.min_price}} TL</span></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="game-card --horizontal">
+                            <div class="game-card__box">
+                              
+
+                              {% if value.pic2 %}
+
+                              <div style="min-height: 300px;" class="game-card__media uk-width-1-2@m"><a href="/account/p/{{value.username}}"><img src="{{value.pic2.url}}"  alt="Alien Games" /></a></div>
+
+                              {% else %}
+
+                              <div style="min-height: 300px;" class="game-card__media uk-width-1-2@m"><a href="/account/p/{{value.username}}"><img src="{{value.area.pic2.url}}"  alt="Alien Games" /></a></div>
+
+                              {% endif %}
+
+
+
+
+                                      <div class="game-card__info" style="margin-bottom: 7px;">
+
+
+
+                                        <button class="creat-list-btn" onclick="location.href='/account/p/query/{{value.username}}/ptf';"><i class="ico_add-square"></i><a href="/account/p/query/{{value.username}}/ptf">Randevu Çizelgesi</a></button>
+
+                                        
+                                    {% if request.user.user_type == 4 %}
+
+                                    <div class="game-card__bottom ">
+                                      <button class="creat-list-btn" onclick="location.href='/account/pc/{{request.user.username}}/message/{{value.username}}/';"><i class="ico_add-square"></i><a href="/account/pc/{{request.user.username}}/message/{{value.username}}/">Mesaj At</a></button>
+                                    </div>
+
+
+                                    
+                                    {% endif %}
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+      
+
+                </div>
+                <div class="swipper-nav">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}   
+
+
+  </div>
+</main>
+
+
+
+
+
+
+
+{% endblock body1 %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if request.user.user_type == 4 %}
+
+
+
+<section class="h-200 h-300" >
+
+
+    <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Aktiviteler</h3>
+  
+
+                
+
+                <div class="form-outline mb-4 " style="text-align-center">
+                    <p>Burada, istediğiniz aktiviteye giriş yapabilirsiniz.</p>
+                </div>
+
+                <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5"></div>
+</section>
+  
+  
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="  pb-md-0  ">Bütün Mekan Hesapları</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% for value in users %} 
+
+<section class="h-200 h-300" >
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+
+
+
+            
+
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+
+
+
+
+            <div class="card-body p-4 p-md-5">
+              
+    
+                <div class="small mb-2"> Mekan İsmi : {{value.place_name}}
+                </div>
+
+                <div class="small mb-2"> Mekan Konumu : {{value.area}}
+                </div>
+
+                {% if request.user.user_type != 2 %}
+                <div class="small mb-2"> <strong>Telefon Numarası : </strong>+0 {{value.phone}}
+                </div>
+                {% endif %}
+
+                <div class="small mb-2"> Rezervelenebilecek Oyunlu Masa Sayısı : {{value.max_table_normal}}
+                </div>
+
+                <div class="small mb-2"> Rezervelenebilecek Oyunsuz Masa Sayısı : {{value.max_table_normal}}
+                </div>
+
+                <div class="small mb-2"> Depozito Fiyatı : {{value.min_price}}
+                </div>
+                
+
+                <input class=" btn btn-success btn-sm md-5 "style="float:right" type="button" onclick="location.href='/account/p/{{value.username}}/';"  value="Profili İncele" /> 
+
+                {% if request.user.user_type == 4 %}
+                <input class=" btn btn-info btn-sm md-5 mr-3"style="float:right" type="button" onclick="location.href='/account/pc/{{request.user.username}}/message/{{value.username}}/';"  value="Mesaj At" />   
+                {% endif %}
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>
+</section>
+
+
+{% endfor %}   
+  
+
+
+</div>{% endif %}

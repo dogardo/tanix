@@ -1,0 +1,283 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends "layout.html" %}{% block scripts%} {% endblock scripts%} 
+
+
+
+
+{% block body1 %}{% load crispy_forms_tags %}
+
+
+
+
+
+
+
+
+
+  <main class="page-main">
+
+    <ul uk-accordion class="widjet__body">
+      <li>
+        <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">Kılavuz İçin Tıklayınız</button>
+      
+        <div class="uk-accordion-content">
+              <p>1 - Spesifik bir yerde etkinlik düzenleyecekseniz: Etkinliği öneren kişi, etkinliğin bağlı olduğu oyunu getirmekten sorumludur.</p>
+              <p>2 - Hem mekan hem de spesifik bir yer belirtemezsiniz. </p>
+              <p>3 - En geç 1 hafta, en erken 6 saat sonrası için randevu alabilirsiniz.</p>
+              <p>4 - Randevu saatleri 9.00-22.00 aralığındadır.</p>
+              <p>5 - Buluşma saatinden 6 saat önce lobi sarıya döner. 3 saat kala ise kırmızıya döner ve çıkışlar kapanır.</p>
+              <p>6 - 3 saat kala, eğer gerekli kullanıcı sayısına ulaşılmazsa lobi silinmez. Bu nedenle kendiniz çıkmalı ya da lobiyi silmelisiniz.</p>
+              <p>7 - Bir mekanda etkinlik düzenleyecekseniz, mekanın belirlediği fiyatta masa depozitosu alınır.</p>
+              <p>8 - Depozito, lobi içindeki kişilerden temin edilir, mekana gittiğinizde depozitoyu hesabınızdan düşeceksiniz, 
+                gitmezseniz paranız yanar.
+              </p>
+  
+            </div>
+      </li>
+  </ul>
+
+    <form class="form" method="post">
+      {% csrf_token %}
+      <div class="uk-grid" data-uk-grid>
+        <div class="uk-width-3-3@l">
+    
+          <div class="widjet__body">
+            <a class="uk-accordion-title" href="#"></a>
+            <div class="uk-accordion-content">
+              <div class="uk-grid" data-uk-grid>
+                <div class="uk-width-1-1@m">
+                  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: -10px;" ><h4>Oyunlu Masa Oluştur</h4></div>
+
+                  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 10px;" ><span>Lobi Başlığı</span></div>
+                  <div class="uk-margin">
+                    <input class="uk-input" type="text" name="name" id="id_name">
+                  </div>
+    
+                  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-25px;margin-top: 25px;" ><span>Aktivite Çeşidi</span></div>
+                  <select class="js-select uk-flex-1" type="text" name="game_type" id="id_game_type">
+
+                    <option value="{{ cccform.game_type }}</option>
+               
+                  </select>
+    
+                  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Aktivite Açıklaması</span></div>
+      
+                  <div class="uk-margin">
+                    <input class="uk-input" type="text" name="description" id="id_description">
+                  </div>
+    
+                  <br>
+    
+                  <ul uk-accordion>
+                    <li class="uk-open">
+                      <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: -35px;" ><span>Bir Mekanda Buluşacaksan</span></div>
+                      <div class="uk-accordion-content">
+
+
+
+
+                        <select class="js-select uk-flex-1 uk-input" type="text" name="place" id="id_place">
+                    
+                          <option value="{{ cccform.place }}</option>
+
+            
+                        </select>
+
+
+                      </div>
+                    </li>
+                  </ul>
+    
+                  <ul uk-accordion>
+                    <li class="uk-open">
+                      <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Bir Bölgede Buluşacaksan</span></div>      <div class="uk-accordion-content">
+                        <select class="js-select uk-flex-1 uk-input" type="text" name="if_its_anywhere" id="id_if_its_anywhere">
+                   
+                          <option value="{{ cccform.if_its_anywhere}}</option>
+
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+    
+                  <div  class="uk-heading-line uk-text-center" style="margin-bottom:-45px;margin-top: 25px;" ><span>Buluşma Zamanı</span></div>
+
+                  <div class="uk-margin">
+                    <input class="uk-input" type="datetime-local" name="m_time" id="id_m_time">
+                  </div>
+                </div>
+
+
+              </div>
+
+
+              <div style="margin-bottom:35px;margin-top:35px"><hr></div>
+              <div class="uk-margin btn">
+                <button class="uk-button uk-button-danger uk-width-1-1" type="submit">Lobiyi Oluştur</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+    
+    
+    
+    </main>
+
+
+{% endblock body1 %}
+
+
+
+
+<section class="h-200 h-300" >
+
+
+  <div class="container py-5 h-100 pt-5 mt-5 mb-5 pb-5 ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Masa Oyunu Oluşturma</h3>
+
+            
+
+              <form method="post" class=" mb-5 ">
+                {% load crispy_forms_tags %}
+                {% csrf_token %}
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Oda Bilgileri
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li>
+                                    <p>Oda İsmi</p>
+                                    <div>{{ cccform.name }}</div>
+                                </li>
+                                <p>description</p>
+                                <li>
+                                    <div>{{ cccform.description }}</div>
+                                </li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Bir Mekanda Buluşmak İstiyorsan
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ cccform.place }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Herhangi Bir Yerde Buluşmak İstiyorsan
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ cccform.if_its_anywhere }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Maksimum Kapasiteyi Kaç Kişi Azaltmak İstersin?
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ cccform.how_friend_exists }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Saat Kaçta Buluşacaksın?
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ cccform.m_time }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+
+                          <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                Ne Yapmak İstiyorsun?
+                              </button>
+                              <div class="collapse" id="home-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><div>{{ cccform.game_type }}</div></li>
+
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                          <button type="submit" class="btn btn-success btn-sm mb-1 mt-5">Lobi Oluştur</button>
+                          
+              </form>
+              
+              
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class=" text-center mt-5 mb-3 text-muted ">© 2022–2023</p>
+  <div class="mb-5"></div>
+  
+
+
+
+</section>
+

@@ -1,0 +1,120 @@
+{% extends "layout.html" %} {% load static %}{% block scripts %} {% endblock scripts %} 
+
+
+
+{% block metas %}
+{% endblock metas %}
+
+
+{% block scriptico %}
+{% endblock scriptico %}
+
+
+{% block body1 %}
+
+
+
+<main class="page-main" style="background-size: 300%;">
+
+
+    <div class="uk-grid" data-uk-grid>
+
+
+  
+          
+    <div class="uk-width-1-1@m uk-grid-margin uk-first-column" >
+
+        
+            
+
+
+            
+
+
+
+
+
+
+          <ul class="uk-accordion widjet__body" uk-accordion>
+            <li>
+              <button class="uk-accordion-title uk-button uk-button-primary uk-width-1-1 creat-list-btn" type="button" style="margin-top: 0px;">#AreaWalls Nedir?</button>
+                
+              <div class="uk-accordion-content">
+
+                <img  src="/static/assets/img/place1.jpg"  alt="consumers" />
+
+
+                <p>                        <a href="" style="font-family: 'candara', sans-serif; color: rgba(85, 13, 61, 0.6);">
+                    Burada görünen bölgeler, hangi bölgelerde etkinliklerin olduğunu gösterir. 
+                    Katıldığın etkinlikleri etiket olarak seçip bu duvarlara yansıtabilirsin.
+
+                    
+                 </a></p>
+
+
+                 
+                <p>                        <a href="" style="font-family: 'candara', sans-serif; color: rgba(85, 13, 61, 0.6);">
+                    Böylece bölgedeki insanlar seninle beraber etkinlik yapmak isteyebilir, ne dersin?
+
+                 </a></p>
+
+
+                 <p>Unutma, etkinlik neredeyse, post'un o duvara düşecektir.</p>
+
+
+                
+
+
+              
+
+
+    
+              </div>
+            </li>
+
+
+            
+          </ul>
+
+
+          {% for place in allplaces.all %}
+          <div class="game-card__bottom widjet__body " >
+            <button class="creat-list-btn" style="margin-top:-0px" ><a href="/wall/{{place.id}}">{{place}} #Wall</a> </button>
+          </div>
+          {% endfor %}
+         
+
+      
+
+      
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+    
+
+
+    
+
+
+</main>
+{% endblock body1 %}
+
+

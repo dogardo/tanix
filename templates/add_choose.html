@@ -1,0 +1,194 @@
+{% extends "layout.html" %}{% block scripts%} {% endblock scripts%} {% block body1 %}{% load crispy_forms_tags %}
+
+
+
+
+
+
+
+
+<main class="page-main">
+
+
+
+    <div class="js-popular">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+
+                        
+                            <div class="game-card__media" style="min-height: 600px;"><a  href="/activities/add/c"><img  src="/static/assets/img/tablegame1.png" alt="Solitary Crusade" /></a></div>
+                    
+
+                            
+                            
+                            <div class="game-card__info">
+                                <div class="game-card__genre"></div>
+                                <div class="game-card__rating-and-price">
+                                   
+                                    
+                                </div>
+                                <div class="game-card__bottom">
+                                    
+                                    <div class="game-card__users">
+                                        <ul class="users-list">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
+                
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+
+                        
+                            <div class="game-card__media" style="min-height: 600px;"><a href="/activities/add/n" ><img  src="/static/assets/img/alternative.png" alt="Solitary Crusade" /></a></div>
+                    
+
+                            
+                            
+                            <div class="game-card__info">
+                                <div class="game-card__genre"></div>
+                                <div class="game-card__rating-and-price">
+                                   
+                                    
+                                </div>
+                                <div class="game-card__bottom">
+                                    
+                                    <div class="game-card__users">
+                                        <ul class="users-list">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+{% endblock body1 %}
+
+
+
+
+<div class="uk-grid" data-uk-grid>
+
+    <div class="uk-width-1-2@l uk-width-1-2@m uk-width-3-3@s">
+        
+        <div class="js-trending">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+
+
+                    <div class="swiper-slide">
+                        <div class="game-card --horizontal">
+                            <div class="game-card__box">
+                    
+                                <div class="game-card__media uk-width-1-2@m"><a href="/activities/add/n"><img src="https://www.cinselsohbetet.com/wp-content/uploads/2020/12/pasif-sohbet-odalari.jpg"  alt="Alien Games" /></a></div>
+                                <div class="game-card__info"><a class="game-card__title" href="/activities/add/n">Oyunsuz Masa Oluştur</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="uk-width-1-2@l uk-width-1-2@m uk-width-3-3@s">
+        
+        <div class="js-trending">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+
+                    <div class="swiper-slide">
+                        <div class="game-card --horizontal">
+                            <div class="game-card__box">
+
+                                <div class="game-card__media uk-width-1-2@m"><a href="/activities/add/c"><img src="https://digitalage.com.tr/wp-content/uploads/2018/02/Oyun-dunyasinda-Turkiyenin-ayak-sesleri.jpg"  alt="Alien Games" /></a></div>
+                                <div class="game-card__info"><a class="game-card__title" href="/activities/add/c">Oyunlu Masa Oluştur</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<main class="page-main">
+
+
+
+
+
+
+    <div class="uk-position-relative" uk-slideshow="animation: fade"">
+
+        <ul class="uk-slideshow-items">
+            <li>
+                <img src="https://www.cinselsohbetet.com/wp-content/uploads/2020/12/pasif-sohbet-odalari.jpg" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://digitalage.com.tr/wp-content/uploads/2018/02/Oyun-dunyasinda-Turkiyenin-ayak-sesleri.jpg" alt="" uk-cover>
+            </li>
+
+        </ul>
+    
+        <div class="uk-position-bottom-center uk-position-small">
+            <ul class="uk-thumbnav">
+                <li uk-slideshow-item="0"><a href="#"><img src="https://www.cinselsohbetet.com/wp-content/uploads/2020/12/pasif-sohbet-odalari.jpg" width="100" height="67" alt=""></a></li>
+                <li uk-slideshow-item="1"><a href="#"><img src="https://digitalage.com.tr/wp-content/uploads/2018/02/Oyun-dunyasinda-Turkiyenin-ayak-sesleri.jpg" width="100" height="67" alt=""></a></li>
+                
+            </ul>
+        </div>
+    
+    </div>
+
+
+
+
+
+</main>

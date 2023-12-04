@@ -1,0 +1,735 @@
+{% extends "layout.html" %} {% block body1 %}
+
+
+<main class="page-main">
+
+
+
+  <ul class="uk-breadcrumb">
+      <li><a href="/activities/"><span data-uk-icon="chevron-left" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" stroke-width="1.03" points="13 16 7 10 13 4"></polyline></svg></span><span>Aktiviteler</span></a></li>
+      <li><span> {{room.name}} </span></li>
+  </ul>
+
+  <div class="uk-grid uk-grid-small" data-uk-grid="">
+
+
+      <div class="uk-width-2-3@m uk-first-column">
+
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" style="margin-bottom:-50px;margin-top: 10px;" ><h4 class="uk-text-lead">Mekan Görselleri</h4></div>
+
+      </div>
+
+
+
+      <div class="js-popular">
+                
+        {% if room.place %}
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+
+
+              <div class="swiper-slide">
+                <div class="game-card">
+                    <div class="game-card__box">
+
+                        {% if room.place.pic1 %}
+                        <div style="min-height: 300px;" class="game-card__media "><a href="{{room.place.pic1.url}}" ><img src="{{room.place.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                        {%else%}
+                        <div  style="min-height: 300px;" class="game-card__media"><a href="{{room.place.area.pic1.url}}"><img src="{{room.place.area.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+                
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+
+                            {% if room.place.pic2 %}
+                            <div style="min-height: 300px;" class="game-card__media "><a href="{{room.place.pic2.url}}" ><img src="{{room.place.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {%else%}
+                            <div  style="min-height: 300px;" class="game-card__media"><a href="{{room.place.area.pic2.url}}"><img src="{{room.place.area.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+                            {% if room.place.pic3 %}
+                            <div style="min-height: 300px;" class="game-card__media"><a href="{{room.place.pic3.url}}"><img src="{{room.place.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {%else%}
+                         
+                            <div style="min-height: 300px;" class="game-card__media"><a href="{{room.place.area.pic3.url}}"><img src="{{room.place.area.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {% endif %}   
+
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+
+                            {% if room.place.pic4 %}
+                            <div style="min-height: 300px;" class="game-card__media"><a href="{{room.place.pic4.url}}"><img src="{{room.place.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {%else%}
+                            <div style="min-height: 300px;" class="game-card__media"><a href="{{room.place.area.pic4.url}}"><img src="{{room.place.area.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {% endif %} 
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <div class="game-card__box">
+
+                            {% if room.place.pic5 %}
+                            <div style="min-height: 300px;" class="game-card__media"><a href="{{room.place.pic5.url}}"><img src="{{room.place.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {%else%}
+                            <div style="min-height: 300px;"class="game-card__media"><a href="{{room.place.area.pic5.url}}"><img src="{{room.place.area.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+                            {% endif %} 
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        {% else %}
+
+
+        <div class="swiper">
+          <div class="swiper-wrapper">
+
+
+
+            <div class="swiper-slide">
+              <div class="game-card">
+                  <div class="game-card__box">
+
+
+                      <div style="min-height: 300px;" class="game-card__media "><a href="{{room.if_its_anywhere.pic1.url}}" ><img src="{{room.if_its_anywhere.pic1.url}}" alt="Struggle of Rivalry" /></a></div>
+
+
+                  </div>
+              </div>
+          </div>
+
+              
+              <div class="swiper-slide">
+                  <div class="game-card">
+                      <div class="game-card__box">
+
+                          <div style="min-height: 300px;" class="game-card__media "><a href="{{room.if_its_anywhere.pic2.url}}" ><img src="{{room.if_its_anywhere.pic2.url}}" alt="Struggle of Rivalry" /></a></div>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="swiper-slide">
+                  <div class="game-card">
+                      <div class="game-card__box">
+
+                       
+                          <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.pic3.url}}"><img src="{{room.if_its_anywhere.pic3.url}}" alt="Struggle of Rivalry" /></a></div>
+ 
+
+
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="swiper-slide">
+                  <div class="game-card">
+                      <div class="game-card__box">
+
+
+                          <div style="min-height: 300px;" class="game-card__media"><a href="{{room.if_its_anywhere.pic4.url}}"><img src="{{room.if_its_anywhere.pic4.url}}" alt="Struggle of Rivalry" /></a></div>
+
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="swiper-slide">
+                  <div class="game-card">
+                      <div class="game-card__box">
+
+
+                          <div style="min-height: 300px;"class="game-card__media"><a href="{{room.if_its_anywhere.pic5.url}}"><img src="{{room.if_its_anywhere.pic5.url}}" alt="Struggle of Rivalry" /></a></div>
+
+                      </div>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+      </div>
+        {% endif %}
+    </div>
+          
+
+
+      </div>
+
+      <div class="uk-width-1-3@m">
+
+      
+    <div class="container">
+      <div  class="uk-heading-line uk-text-center" style="margin-bottom:-20px;margin-top: 0px;" ><h4 class="uk-text-lead">Lobi Künyesi</h4></div>
+  
+  </div>
+
+  {% if request.user.user_type == 2 %}
+  
+      <div class="game-profile-price">
+
+
+
+      
+
+        {%if request.user|safe in room.ppl_existence.all|safe %}
+
+        
+      <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+        <span class="ico_shopping-cart"></span>
+
+        {% if room.place %}
+        <span><a onclick="location.href='/activities/quit/{{room.id}}n';"> Lobiden Çık - İade : {{room.place.min_price}} TL</a></span>
+        {% else %}
+        <span><a onclick="location.href='/activities/quit/{{room.id}}n';"> Lobiden Çık</a></span>
+        {% endif %}
+      </button>
+
+
+        </button>
+        {% if request.user == room.creator %}
+        <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+          <span class="ico_shopping-cart"></span>
+          {% if room.place %}
+          <span><a onclick="location.href='/activities/delete/{{room.id}}n';"> Lobiyi Sil - Herkese: {{room.place.min_price}} TL</a></span>
+          {% else %}
+          <span><a onclick="location.href='/activities/quit/{{room.id}}n';"> Lobiyi Sil</a></span>
+          {% endif %}
+        </button>
+  
+        
+      {% endif %}
+
+        {% elif request.user|safe in room.offers.all|safe %}
+
+    
+        
+        <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+          <span class="ico_shopping-cart"></span>
+          <span> <a onclick="location.href='/activities/back/{{room.id}}n';"> Katılma İsteğini Geri Çek</a></span>
+        </button>
+
+
+        {% else %}
+
+
+
+        <button class="uk-button uk-button-danger uk-width-1-1" type="button">
+          <span class="ico_shopping-cart"></span>
+          {% if room.place %}
+          <span><a onclick="location.href='/activities/request/{{room.id}}n';"> Lobiye Katılma İsteğinde Bulun : {{room.place.min_price}} TL</a></span>
+          {% elif room.if_its_anywhere %}
+          <span><a onclick="location.href='/activities/request/{{room.id}}n';"> Lobiye Katılma İsteğinde Bulun : Ücretsiz </a></span>
+          {% endif %}
+        </button>
+
+        {% endif %}
+
+    </div>
+
+
+    {% endif %}
+
+        <ul class="js-filter uk-grid-small uk-child-width-1-1 uk-child-width-5-5@xl uk-child-width-4-4@l uk-child-width-3-3@m uk-child-width-2-2@s uk-grid uk-grid-stack" data-uk-grid="" style="">
+   
+          <li data-type="table" class="uk-grid-margin uk-first-column" style="">
+
+            <div class="uk-child-width-5-5@l uk-width-5-5@l ">
+      
+              <div class="js-trending">
+                  <div class="swiper">
+                      <div class="swiper-wrapper">
+
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --vertical">
+                                  <div class="game-card__box">
+                                    
+                                      {% if room.game_type.activity_picture %}
+      
+                                      <div class="game-card__media uk-width-1-2@m"><a href="/activities/{{value.id}}c"><img src="{{value.game_type.activity_picture.url}}" style="width: 70%;height:70%;"  alt= /></a></div>
+                                      
+                                      </div>
+                                      <div class="stream-item__info">
+                                        <div class="stream-item__title">
+                                          
+                                        </div>
+                                      </div>
+      
+                                      {% else %}
+
+                                      <div class="stream-item__info">
+                                        <div class="stream-item__title"><small class="game-card__price"> {{room.ppl_existence.count}} / {{room.max_ppl_existence}}</small></div>
+                                      </div>
+      
+                                      <div class="game-card__media child-width-5-5@l"><a href="/activities/{{value.id}}c"><img src="/static/assets/img/lookright.png"  style="width: 80%;height:80%; margin-top:0px;" /></a></div>
+      
+                                      {% endif %}
+
+                                      
+      
+                                      <div class="game-card__info child-width-5-5@l">
+                                        
+                                        <a class="game-card__title" href="10_game-profile.html">{{value}}</a>
+
+                                        
+                                        
+
+                                          
+                                          
+
+                                            <div class="game-card__price"><span>{{room.creator}}</span><span class="game-card__genre"> tarafından, </span></div>
+                                   
+                                          {% if room.place %}
+                                          <div class="game-card__price"><span> {{room.place}}</span> <span class="game-card__genre">  ismindeki mekanda,</span></div>
+                                          {% elif room.if_its_anywhere %}
+                                          <div class="game-card__price"><span> {{room.if_its_anywhere}}</span> <span class="game-card__genre">  konumundaki belirlenen noktada,</span></div>
+                                          {% endif %}
+                                          <div class="game-card__price"><span> {{room.m_time}}</span> <span class="game-card__genre"> tarihinde,</span></div>
+                                          <div class="game-card__price"><span> {{room.game_type}}</span> <span class="game-card__genre"> aktivitesi</span></div>
+            
+
+
+
+
+                                        <div class="game-card__bottom">
+                                          {% if room.place %}
+                                          <div class="game-card__price"> <span>  Depozito Fiyatı: {{room.place.min_price}} TL</span></div>
+                                          {% else %}
+                                          <div class="game-card__price"> <span>  Bu Etkinlik Ücretsiz</span></div>
+                                          {% endif %}
+                                          <div class="game-card__users">
+                                              <ul class="users-list">
+
+                                                  {% for people in room.ppl_existence.all %}
+                                                  {% if people.pic1 %}
+                                                  <li><img src="{{people.pic1.url}}" alt="user"></li>
+                                                  {% else %}
+                                                  <li><img src="/static/assets/img/user-1.png" alt="user"></li>
+                                                  {% endif %}
+                                                  {% endfor %}
+                                                   - {{room.ppl_existence.count}} / {{room.max_ppl_existence}}
+                                                 
+                                              </ul>
+                                             
+                                          </div>
+                                      </div>
+
+
+                                  
+
+                               
+                                      
+                                        
+                                         
+                                      </div>
+
+
+                                  </div>
+
+
+                              </div>
+                          </div>
+      
+      
+                          <div class="swiper-slide">
+                              <div class="game-card --horizontal">
+                                  <div class="game-card__box">
+                                    
+      
+
+
+                                  
+
+      
+                                      <div class="game-card__info"><a href="#">
+                                      <div  class="uk-heading-line uk-text-center" ><span>Açıklama</span></div>
+    
+                                    </a> 
+                                          
+
+
+
+
+
+
+                                        <div class="game-card__price"><span class="game-card__genre"> {{room.description}}</span></div>
+
+
+    
+                       
+
+
+
+
+
+                                     
+
+
+
+                              
+
+
+                       
+      
+
+        
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+      
+      
+
+            
+      
+                      </div>
+
+              </div>
+          </div>
+
+          </li>   
+         
+        
+        </ul>
+
+
+        
+
+
+
+
+
+      </div>
+
+      <div class="uk-width-1-1@m">
+
+
+        <div class="container" >
+          <div  class="uk-heading-line uk-text-center" style="margin-top: -25px; margin-bottom: -20px;" ><h4 class="uk-text-lead">Lobideki İnsanlar</h4></div>
+      </div>
+
+        
+       <div class="widjet --friend-requests">
+
+          
+
+
+
+
+        <div class="uk-child-width-1-1@m">
+
+
+
+
+   
+          {% for people in room.ppl_existence.all %}
+
+          {% if people in the_user.imbanned.all %}
+          {% else %}
+          {% if people|safe == request.user|safe %}
+
+          <div class="user-item --active" style="margin-bottom: 10px;">
+
+            {%if people.pic1%}
+          <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+            {% else%}
+            <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+            {%endif%}
+        
+              <div class="user-item__name">
+                  <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}} </small> </a></div>
+              </div>
+        
+              <div class="friend-requests-item__action">
+
+              </div>
+             
+          </div>
+
+          {% endif %}
+          {% endif %}
+         
+          {% endfor %}
+
+
+
+
+
+
+          {% for people in room.ppl_existence.all %}
+
+          {% if people in the_user.imbanned.all %}
+          {% else %}
+          {% if people|safe != request.user|safe %}
+          
+
+
+            <div class="user-item --active">
+              {% if people.pic1 %} 
+              <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+            {% else %} 
+            <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+            {% endif %}
+          
+                <div class="user-item__name">
+                    <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+                </div>
+          
+                <div class="friend-requests-item__action">
+                  {% if people in the_user.friends.all  %}
+                
+                  {% else %}
+                  <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/friends/fquery/{{people.username}}/';"><span class="ico_add-square"></span></button>
+                  {% endif %}
+                  <button class="confirm" type="button" onclick="location.href='/account/c/{{request.user}}/message/{{people.username}}/';"><i class="ico_chats"></i></button>
+                        
+                </div>
+               
+            </div>
+          
+          
+          {% endif %}
+          {% endif %}
+         
+          {% endfor %}
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+      </div>
+
+
+
+
+      
+      {% if request.user == room.creator %}
+      <div class="uk-width-1-2@m">
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" ><h4 class="uk-text-lead" style="margin-bottom: -20px;">Katılma İstekleri</h4></div>
+      </div>
+
+
+
+      {% if room.offers.all.count == 0 %}
+      <div class="user-item --active" style="margin-bottom: 10px;">
+
+
+        <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+    
+          <div class="user-item__name">
+              <div class="user-item__name"><a href="/account/c/{{people.username}}"><small>Şimdilik Kimse Başvurmamış</small> </a></div>
+          </div>
+    
+          <div class="friend-requests-item__action">
+
+          </div>
+         
+        
+      </div>
+
+      {% endif %}
+      
+        {% for people in room.offers.all %}
+
+        <div class="user-item --active">
+          {% if people.pic1 %} 
+          <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+        {% else %} 
+        <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+        {% endif %}
+      
+            <div class="user-item__name">
+                <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+            </div>
+      
+            <div class="friend-requests-item__action">
+
+              <button class="confirm" type="button" ><a onclick="location.href='/activities/request/{{room.id}}n/{{people.username}}/y';"><span class="ico_add-square"></a></span></button>
+
+
+
+              <button class="reject" type="button"><a onclick="location.href='/activities/request/{{room.id}}n/{{people.username}}/n';"><i class="ico_report"></i></a></button>
+         
+            </div>
+           
+        </div>
+
+        {% endfor %}
+
+      </div>
+      {% endif %}
+
+
+
+
+      {% if request.user == room.creator %}
+      <div class="uk-width-1-2@m" >
+
+        <div class="container">
+          <div  class="uk-heading-line uk-text-center" ><h4 class="uk-text-lead" style="margin-bottom: -20px;">Arkadaşlarını Davet Et</h4></div>
+      </div>
+
+      {% for people in the_user.friends.all %}
+      {% if people in room.ppl_existence.all  %}
+      {% else %}   
+
+      <div class="user-item --active">
+        {% if people.pic1 %} 
+        <div class="user-item__avatar"><img src="{{people.pic1.url}}" alt="profile"></div>
+      {% else %} 
+      <div class="user-item__avatar"><img src="/static/assets/img/profile.png" alt="profile"></div>
+      {% endif %}
+    
+          <div class="user-item__name">
+              <div class="user-item__name"><a href="/account/c/{{people.username}}"><small> @{{people}}</small> </a></div>
+          </div>
+    
+          <div class="friend-requests-item__action">
+
+            <button class="confirm" type="button" ><a onclick="location.href='/activities/{{room.id}}n/invite/{{people.username}}';"><span class="ico_add-square"></a></span></button>
+
+
+       
+          </div>
+         
+      </div>
+
+
+      {% endif %}    
+      {% endfor %}
+      
+      {% endif %}  
+
+
+
+
+
+
+
+
+ 
+    </div>
+
+    {%if request.user|safe in room.ppl_existence.all|safe %}
+
+
+  
+    <div class="uk-width-1-1@m" >
+
+
+
+     <div class="game-card__bottom" {% if request.user == room.creator %} style="margin-top: -30px;" {% endif %} > 
+      <button class="creat-list-btn"  href="#toggle-animation" class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation; animation: uk-animation-fade">Chat Aç/Kapa</button>
+    </div>
+    
+    <div id="toggle-animation" class="uk-card uk-card-default uk-card-body uk-margin-small">
+
+      <div class="chat-messages-box"  >
+
+
+          
+
+            {% if the_user.chats.count == 0 %}
+
+            {% else %}
+
+
+
+          <div class="chat-messages-body" style="min-width: 300px;min-height: 300px;">
+
+            {% for msg in room.chat.all %}
+
+            {% if msg.creator|safe == request.user|safe %}
+            <div>
+            <div class="messages-item --friend-message">
+
+                <div class="messages-item__text" style="margin-top: 50px;"> {{msg.message_itself}}</div>
+
+            </div></div>
+
+            {% else %}
+
+            <div>
+            <div class="messages-item --your-message">
+
+                <div class="messages-item__text" style="margin-top: 10px;">{{msg.creator}} : {{msg.message_itself}}</div>
+
+            </div></div>
+
+           
+            {% endif %}
+
+     
+            {% endfor %}
+        </div>
+
+            {% endif %}
+             
+      
+          <div class="chat-messages-footer">
+              <form method="post"">
+                {% csrf_token %} 
+                  <div class="chat-messages-form">
+                      <div class="chat-messages-form-controls"><input class="chat-messages-input" type="text" placeholder="Type a message" id="{{mform.message_itself}}</div>
+                      <div class="chat-messages-form-btn"><button class="ico_message" type="button"></button></div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+    {% endif %}
+</main>
+
+
+{% endblock body1 %}
+
+
+
