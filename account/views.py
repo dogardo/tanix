@@ -1572,9 +1572,9 @@ def generate_password(length=8):
 
 def mailsend(subject,message,mail):
 
-    sender_email = "deagledears123123@gmail.com"
+    sender_email = "xxx"
     receiver_email = mail
-    password = "ppqnyxaepjpqjrex"
+    password = "xxx"
 
     # E-posta içeriği
     subject = subject
